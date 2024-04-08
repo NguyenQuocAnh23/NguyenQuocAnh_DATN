@@ -110,3 +110,14 @@ F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Mi
 F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.csproj.GenerateResource.cache
 F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.UpdateCategory.resources
 F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.UpdateCategory1.resources
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\bin\CKFinder.dll
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\bin\CKFinder.pdb
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.CreatedDatabase1.resources
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.UpdateActive.resources
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.UpdateCommonAbstract.resources
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.UpdateSeoTitle.resources
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.ChangeLenghtModels.resources
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\bin\PagedList.dll
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\bin\PagedList.Mvc.dll
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\bin\PagedList.xml
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\bin\PagedList.Mvc.xml
