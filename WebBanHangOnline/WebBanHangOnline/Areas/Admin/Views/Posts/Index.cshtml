@@ -1,5 +1,6 @@
-﻿@model IEnumerable<WebBanHangOnline.Models.EF.Posts>
-@{
+﻿@model PagedList.PagedList<WebBanHangOnline.Models.EF.Posts>
+@using PagedList.Mvc;
+@using PagedList;@{
     ViewBag.Title = "Bài viết";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
@@ -49,6 +50,22 @@
             </div>
         </div>
         <div class="card-body">
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-3"></div>
+                <div class="col-3">
+                    @using (Html.BeginForm("index", "Posts", FormMethod.Get, new { }))
+                    {
+                        <div class="input-group input-group-sm">
+                            @Html.TextBox("Searchtext", null, new { style = "width: 85%", placeholder = "Tiêu đề ..." })
+                            @*<input type="text" name="searchtext" class="form-control">*@
+                            <span class="input-group-append">
+                                <button type="submit" class="btn btn-info btn-flat"><i class="fas fa-search"></i></button>
+                            </span>
+                        </div>
+                    }
+                </div>
+            </div>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -65,7 +82,7 @@
                 <tbody>
                     @if (Model != null && Model.Any())
                     {
-                        var i = 1;
+                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                         foreach (var item in Model)
                         {
                             var strCheck = item.IsActive ? " <i class = 'fa fa-check text-success'></i> " : "<i class = 'fas fa-times text-danger'></i>";
@@ -82,7 +99,7 @@
                                     <a href="/admin/posts/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
                                     <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
                                 </td>
-                                
+
                             </tr>
                             i++;
                         }
@@ -97,7 +114,9 @@
                 </tbody>
 
             </table>
-
+            <div style="text-align:center">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
