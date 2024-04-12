@@ -121,3 +121,7 @@ F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\bin\PagedList.dll
 F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\bin\PagedList.Mvc.dll
 F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\bin\PagedList.xml
 F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\bin\PagedList.Mvc.xml
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.AddIcon.resources
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.AddTitlle.resources
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.Update1204.resources
+F:\DATN\Web_Test\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.Update1204_1.resources

@@ -183,6 +183,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -221,6 +222,22 @@
     <Compile Include="Migrations\202404080711237_ChangeLenghtModels.cs" />
     <Compile Include="Migrations\202404080711237_ChangeLenghtModels.designer.cs">
       <DependentUpon>202404080711237_ChangeLenghtModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404100402430_AddIcon.cs" />
+    <Compile Include="Migrations\202404100402430_AddIcon.designer.cs">
+      <DependentUpon>202404100402430_AddIcon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404100409223_AddTitlle.cs" />
+    <Compile Include="Migrations\202404100409223_AddTitlle.designer.cs">
+      <DependentUpon>202404100409223_AddTitlle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404120233362_Update1204.cs" />
+    <Compile Include="Migrations\202404120233362_Update1204.designer.cs">
+      <DependentUpon>202404120233362_Update1204.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404120347110_Update1204_1.cs" />
+    <Compile Include="Migrations\202404120347110_Update1204_1.designer.cs">
+      <DependentUpon>202404120347110_Update1204_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3039,6 +3056,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\autoNumeric-1.9.45.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -3149,6 +3167,9 @@
     <Content Include="Areas\Admin\Views\Posts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3160,6 +3181,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Uploads\images\399477267_1020733275842085_8131402605689524792_n.jpg" />
+    <Content Include="Uploads\images\BadRacket5.jpg" />
+    <Content Include="Uploads\images\Cat2.jpg" />
+    <Content Include="Uploads\_thumbs\Images\399477267_1020733275842085_8131402605689524792_n.jpg" />
+    <Content Include="Uploads\_thumbs\Images\BadRacket5.jpg" />
+    <Content Include="Uploads\_thumbs\Images\Cat2.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -3199,6 +3226,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Content\ckfinder\userfiles\" />
+    <Folder Include="Uploads\files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -3237,6 +3265,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404080711237_ChangeLenghtModels.resx">
       <DependentUpon>202404080711237_ChangeLenghtModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404100402430_AddIcon.resx">
+      <DependentUpon>202404100402430_AddIcon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404100409223_AddTitlle.resx">
+      <DependentUpon>202404100409223_AddTitlle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404120233362_Update1204.resx">
+      <DependentUpon>202404120233362_Update1204.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404120347110_Update1204_1.resx">
+      <DependentUpon>202404120347110_Update1204_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
