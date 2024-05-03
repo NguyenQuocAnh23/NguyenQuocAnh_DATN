@@ -14,7 +14,7 @@
             <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/news" class="nav-link">Danh mục sản phẩm</a>
+            <a href="/admin/productcategory" class="nav-link">Danh mục sản phẩm</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Thêm mới</a>
@@ -45,7 +45,7 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Thông tin thêm mới tin tức</h3>
+            <h3 class="card-title">Thông tin thêm mới danh mục</h3>
 
 
         </div>
@@ -61,6 +61,17 @@
                         <label for="exampleInputEmail1">Tiêu đề</label>
                         @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu đề ..." })
                         @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Ảnh đại diện</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                @Html.TextBoxFor(x => x.Icon, new { @id = "txtImage", @class = "form-control" })
+                            </div>
+                            <div class="input-group-append">
+                                <input type="button" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Alias</label>

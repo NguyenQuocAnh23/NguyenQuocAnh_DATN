@@ -48,7 +48,7 @@
 
             <div class="card-tools">
                 <a href="/admin/products/add" class=" btn btn-primary">Thêm mới</a>
-                <a href="#" class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
+                <a href="#" class="btn btn-danger" id="BtnDeleteAll">Xóa hết</a>
             </div>
         </div>
         <div class="card-body">
@@ -80,10 +80,10 @@
                     <th>Giá</th>
                     <th>Ngày tạo</th>
                     <th>Home</th>
-                    <th>Hiển thị</th>
+                    @*<th>Hiển thị</th>
                     <th>Hot</th>
                     <th>Feature</th>
-                    <th>Sale</th>
+                    <th>Sale</th>*@
                     <th style="width:150px"></th>
                 </tr>
             </thead>
@@ -118,7 +118,7 @@
                             <td style="text-align:left">
                                 <a href='#' data-id="@item.Id" class="btnHome">@Html.Raw(strCheckHome)</a>
                             </td>
-                            <td style="text-align:left">
+                            @*<td style="text-align:left">
                                 <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
                             </td>
                             <td style="text-align:left">
@@ -129,7 +129,7 @@
                             </td>
                             <td style="text-align:left">
                                 <a href='#' data-id="@item.Id" class="btnSale">@Html.Raw(strCheckSale)</a>
-                            </td>
+                            </td>*@
                             <td>
                                 <a href="/admin/products/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
                                 <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
@@ -209,7 +209,7 @@
                     }
                 });
                 if (str.length > 0) {
-                    var conf = confirm('Bạn có muốn xóa bản ghi này không?');
+                    var conf = confirm('Bạn có muốn xóa bản ghi đã chọn không?');
                     if (conf === true) {
                         $.ajax({
                             url: '/admin/products/deleteAll',

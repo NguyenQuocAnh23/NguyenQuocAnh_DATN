@@ -2,16 +2,59 @@
     ViewBag.Title = "Home Page";
 }
 
+<style>
+    .red_button1 {
+        display: -webkit-inline-box;
+        display: -moz-inline-box;
+        display: -ms-inline-flexbox;
+        display: -webkit-inline-flex;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        height: 40px;
+        background: #5BBEE1;
+        border-radius: 3px;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+
+        .red_button1:hover {
+            background: lightblue !important;
+        }
+
+        .red_button1 a {
+            display: block;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            line-height: 40px;
+            width: 100%;
+        }
+
+    .shop_now_button1 {
+        width: 140px;
+        margin-top: 32px;
+    }
+</style>
+
 <!-- Slider -->
 
-<div class="main_slider" style="background-image:url(Content/assets/images/slider_1.jpg)">
+<div class="main_slider" style="background-image:url(Content/assets/images/Test1.png)">
     <div class="container fill_height">
         <div class="row align-items-center fill_height">
             <div class="col">
                 <div class="main_slider_content">
-                    <h6>Spring / Summer Collection 2017</h6>
-                    <h1>Get up to 30% Off New Arrivals</h1>
-                    <div class="red_button shop_now_button"><a href="#">shop now</a></div>
+                    <h5 style="color:#5CBDE1; font-family: Comic Sans MS; font-size: 30px">Spring / Summer Collection 2024</h5>
+                    <h1 style="margin-left:-6px; color: white; font-family: Arial; font-weight: 900; font-size: 100px">BIG SALE</h1>
+                    <h3 style="color: white; font-weight:700"> UP TO 50% OFF</h3>
+                    <div style="border-radius: 50px;" class="red_button1 shop_now_button1"><a href="#">BUY NOW</a></div>
                 </div>
             </div>
         </div>
@@ -32,37 +75,43 @@
 <!-- Deal of the week -->
 
 <div class="deal_ofthe_week">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="deal_ofthe_week_img">
-                    <img src="images/deal_ofthe_week.png" alt="">
-                </div>
-            </div>
-            <div class="col-lg-6 text-right deal_ofthe_week_col">
-                <div class="deal_ofthe_week_content d-flex flex-column align-items-center float-right">
-                    <div class="section_title">
-                        <h2>Deal Of The Week</h2>
+    <div class="main_slider" style="background-image:url(Content/assets/images/Test2.png)">
+        <div class="container fill_height">
+            <div class="row align-items-center fill_height">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="deal_ofthe_week_img">
+                                <img src="images/deal_ofthe_week.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 text-right deal_ofthe_week_col">
+                            <div class="deal_ofthe_week_content d-flex flex-column align-items-center float-right">
+                                <div class="section_title">
+                                    <h2>Deal Of The Week</h2>
+                                </div>
+                                <ul class="timer">
+                                    <li class="d-inline-flex flex-column justify-content-center align-items-center">
+                                        <div id="day" class="timer_num">01</div>
+                                        <div class="timer_unit">Day</div>
+                                    </li>
+                                    <li class="d-inline-flex flex-column justify-content-center align-items-center">
+                                        <div id="hour" class="timer_num">14</div>
+                                        <div class="timer_unit">Hours</div>
+                                    </li>
+                                    <li class="d-inline-flex flex-column justify-content-center align-items-center">
+                                        <div id="minute" class="timer_num">40</div>
+                                        <div class="timer_unit">Mins</div>
+                                    </li>
+                                    <li class="d-inline-flex flex-column justify-content-center align-items-center">
+                                        <div id="second" class="timer_num">13</div>
+                                        <div class="timer_unit">Sec</div>
+                                    </li>
+                                </ul>
+                                <div class="red_button deal_ofthe_week_button"><a href="#">shop now</a></div>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="timer">
-                        <li class="d-inline-flex flex-column justify-content-center align-items-center">
-                            <div id="day" class="timer_num">03</div>
-                            <div class="timer_unit">Day</div>
-                        </li>
-                        <li class="d-inline-flex flex-column justify-content-center align-items-center">
-                            <div id="hour" class="timer_num">15</div>
-                            <div class="timer_unit">Hours</div>
-                        </li>
-                        <li class="d-inline-flex flex-column justify-content-center align-items-center">
-                            <div id="minute" class="timer_num">45</div>
-                            <div class="timer_unit">Mins</div>
-                        </li>
-                        <li class="d-inline-flex flex-column justify-content-center align-items-center">
-                            <div id="second" class="timer_num">23</div>
-                            <div class="timer_unit">Sec</div>
-                        </li>
-                    </ul>
-                    <div class="red_button deal_ofthe_week_button"><a href="#">shop now</a></div>
                 </div>
             </div>
         </div>
@@ -71,7 +120,7 @@
 
 <!-- Best Sellers -->
 
-<div class="best_sellers">
+<!--<div class="best_sellers">
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -83,11 +132,11 @@
         <div class="row">
             <div class="col">
                 <div class="product_slider_container">
-                    <div class="owl-carousel owl-theme product_slider">
+                    <div class="owl-carousel owl-theme product_slider">-->
 
                         <!-- Slide 1 -->
 
-                        <div class="owl-item product_slider_item">
+                        <!--<div class="owl-item product_slider_item">
                             <div class="product-item">
                                 <div class="product discount">
                                     <div class="product_image">
@@ -101,11 +150,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- Slide 2 -->
 
-                        <div class="owl-item product_slider_item">
+                        <!--<div class="owl-item product_slider_item">
                             <div class="product-item women">
                                 <div class="product">
                                     <div class="product_image">
@@ -119,11 +168,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- Slide 3 -->
 
-                        <div class="owl-item product_slider_item">
+                        <!--<div class="owl-item product_slider_item">
                             <div class="product-item women">
                                 <div class="product">
                                     <div class="product_image">
@@ -136,11 +185,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- Slide 4 -->
 
-                        <div class="owl-item product_slider_item">
+                        <!--<div class="owl-item product_slider_item">
                             <div class="product-item accessories">
                                 <div class="product">
                                     <div class="product_image">
@@ -154,11 +203,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- Slide 5 -->
 
-                        <div class="owl-item product_slider_item">
+                        <!--<div class="owl-item product_slider_item">
                             <div class="product-item women men">
                                 <div class="product">
                                     <div class="product_image">
@@ -171,11 +220,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- Slide 6 -->
 
-                        <div class="owl-item product_slider_item">
+                        <!--<div class="owl-item product_slider_item">
                             <div class="product-item accessories">
                                 <div class="product discount">
                                     <div class="product_image">
@@ -189,11 +238,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- Slide 7 -->
 
-                        <div class="owl-item product_slider_item">
+                        <!--<div class="owl-item product_slider_item">
                             <div class="product-item women">
                                 <div class="product">
                                     <div class="product_image">
@@ -206,11 +255,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- Slide 8 -->
 
-                        <div class="owl-item product_slider_item">
+                        <!--<div class="owl-item product_slider_item">
                             <div class="product-item accessories">
                                 <div class="product">
                                     <div class="product_image">
@@ -223,11 +272,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- Slide 9 -->
 
-                        <div class="owl-item product_slider_item">
+                        <!--<div class="owl-item product_slider_item">
                             <div class="product-item men">
                                 <div class="product">
                                     <div class="product_image">
@@ -241,11 +290,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- Slide 10 -->
 
-                        <div class="owl-item product_slider_item">
+                        <!--<div class="owl-item product_slider_item">
                             <div class="product-item men">
                                 <div class="product">
                                     <div class="product_image">
@@ -259,11 +308,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 
                     <!-- Slider Navigation -->
 
-                    <div class="product_slider_nav_left product_slider_nav d-flex align-items-center justify-content-center flex-column">
+                    <!--<div class="product_slider_nav_left product_slider_nav d-flex align-items-center justify-content-center flex-column">
                         <i class="fa fa-chevron-left" aria-hidden="true"></i>
                     </div>
                     <div class="product_slider_nav_right product_slider_nav d-flex align-items-center justify-content-center flex-column">
@@ -273,7 +322,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 <!-- Benefit -->
 
 <div class="benefit">
@@ -284,7 +333,7 @@
                     <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
                     <div class="benefit_content">
                         <h6>free shipping</h6>
-                        <p>Suffered Alteration in Some Form</p>
+                        
                     </div>
                 </div>
             </div>
@@ -292,8 +341,8 @@
                 <div class="benefit_item d-flex flex-row align-items-center">
                     <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
                     <div class="benefit_content">
-                        <h6>cach on delivery</h6>
-                        <p>The Internet Tend To Repeat</p>
+                        <h6>cash on delivery</h6>
+                        
                     </div>
                 </div>
             </div>
@@ -302,7 +351,7 @@
                     <div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
                     <div class="benefit_content">
                         <h6>45 days return</h6>
-                        <p>Making it Look Like Readable</p>
+                       
                     </div>
                 </div>
             </div>
@@ -311,7 +360,7 @@
                     <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
                     <div class="benefit_content">
                         <h6>opening all week</h6>
-                        <p>8AM - 09PM</p>
+                        <p>8AM - 9PM</p>
                     </div>
                 </div>
             </div>
@@ -321,7 +370,7 @@
 
 <!-- Blogs -->
 
-<div class="blogs">
+@*<div class="blogs">
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -363,4 +412,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
