@@ -13,13 +13,14 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin" class="nav-link">Trang chủ</a>
+            <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/admin/category" class="nav-link">@ViewBag.Title</a>
         </li>
     </ul>
 }
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -66,77 +67,128 @@
                         </div>
                     }
                 </div>*@
-            </div>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th><input type="checkbox" id="SelectAll" /></th>
-                        <th>STT</th>
-                        <th>Hình ảnh</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Danh mục</th>
-                        <th>Số lượng</th>
-                        <th>Giá</th>
-                        <th>Ngày tạo</th>
-                        <th>Hiển thị</th>
-                        <th style="width:150px"></th>
-                    </tr>
-                </thead>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="SelectAll" /></th>
+                    <th>STT</th>
+                    <th>Hình ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Danh mục</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                    <th>Ngày tạo</th>
+                    <th>Home</th>
+                    <th>Hiển thị</th>
+                    <th>Hot</th>
+                    <th>Feature</th>
+                    <th>Sale</th>
+                    <th style="width:150px"></th>
+                </tr>
+            </thead>
 
-                <tbody>
-                    @if (Model != null && Model.Any())
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                    foreach (var item in Model)
                     {
-                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
-                        foreach (var item in Model)
+                        var strCheckHome = item.isHome ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                        var strCheck = item.IsActive ? " <i class = 'fa fa-check text-success'></i> " : "<i class = 'fas fa-times text-danger'></i>";
+                        var strCheckHot = item.isHot ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                        var strCheckFe = item.isFeature ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                        var strCheckSale = item.isSale ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+
+                        var strImg = "";
+                        var CheckImage = item.ProductImages.FirstOrDefault(x => x.isDefault);
+                        if (CheckImage != null)
                         {
-                            var strCheck = item.IsActive ? " <i class = 'fa fa-check text-success'></i> " : "<i class = 'fas fa-times text-danger'></i>";
-                            <tr id="trow_@item.Id">
-                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
-                                <td>@i</td>
-                                <td><img src="@item.ProductImages.FirstOrDefault(x=>x.isDefault).Image" width="50" /></td>
-                                <td>@item.Title</td>
-                                <td>@item.ProductCategory.Title</td>
-                                <td>@item.Quantity</td>
-                                <td>@item.Price</td>
-                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                <td style="text-align:left">
-                                    <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
-                                </td>
-                                <td>
-                                    <a href="/admin/products/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
-                                    <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
-                                </td>
-                            </tr>
-                            i++;
+                            strImg = CheckImage.Image;
                         }
-
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="4">Không có bản ghi nào!!!!</td>
+                        <tr id="trow_@item.Id">
+                            <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                            <td>@i</td>
+                            <td><img class="imgproduct" data-id="@item.Id" src="@item.ProductImages.FirstOrDefault(x=>x.isDefault).Image" width="50" /></td>
+                            <td>@item.Title</td>
+                            <td>@item.ProductCategory.Title</td>
+                            <td>@item.Quantity</td>
+                            <td>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</td>
+                            <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                            <td style="text-align:left">
+                                <a href='#' data-id="@item.Id" class="btnHome">@Html.Raw(strCheckHome)</a>
+                            </td>
+                            <td style="text-align:left">
+                                <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
+                            </td>
+                            <td style="text-align:left">
+                                <a href='#' data-id="@item.Id" class="btnHot">@Html.Raw(strCheckHot)</a>
+                            </td>
+                            <td style="text-align:left">
+                                <a href='#' data-id="@item.Id" class="btnFeature">@Html.Raw(strCheckFe)</a>
+                            </td>
+                            <td style="text-align:left">
+                                <a href='#' data-id="@item.Id" class="btnSale">@Html.Raw(strCheckSale)</a>
+                            </td>
+                            <td>
+                                <a href="/admin/products/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
+                                <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+                            </td>
                         </tr>
+                        i++;
                     }
-                </tbody>
 
-            </table>
-            <div style="text-align:center">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-            </div>
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4">Không có bản ghi nào!!!!</td>
+                    </tr>
+                }
+            </tbody>
 
+        </table>
+        <div style="text-align:center">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
         </div>
-        <!-- /.card-footer-->
     </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+
+    </div>
+    <!-- /.card-footer-->
+    
     <!-- /.card -->
 
 </section>
 <!-- /.content -->
+<div id="dialog">
+    <iframe id="myIframe" style="border: 0; width: 100%; height: 100%;"></iframe>
+</div>
 @section scripts{
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
         $(document).ready(function () {
+            //display upload picture form
+            $("#dialog").dialog({
+                autoOpen: false,
+                show: "fade",
+                hide: "fade",
+                modal: true,
+                height: '600',
+                width: '700',
+                resizable: true,
+                title: 'Quản lý ảnh sản phẩm',
+                close: function () {
+                    window.location.reload();
+                }
+            });
+            $('body').on("click", ".imgproduct", function () {
+                var proid = $(this).attr("data-id");
+                $("#dialog #myIframe").attr("src", "/admin/ProductImages/Index?id=" + proid);
+                $('#dialog').dialog('open');
+                return false;
+            });
             $('body').on('click', '#BtnDeleteAll', function (e) {
                 e.preventDefault();
                 var str = "";
@@ -211,7 +263,28 @@
                 }
             });
 
-            $('body').on('click', '.btnActive', function () {
+            $('body').on('click', '.btnHome', function (e) {
+                e.preventDefault();
+                var btn = $(this);
+                var id = btn.data("id");
+                $.ajax({
+                    url: '/admin/products/isHome',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        if (rs.success) {
+                            if (rs.isHo) {
+                                btn.html("<i class = 'fa fa-check text-success'></i>")
+                            } else {
+                                btn.html("<i class = 'fas fa-times text-danger'></i>")
+                            }
+                        }
+                    }
+                });
+            });
+
+            $('body').on('click', '.btnActive', function (e) {
+                e.preventDefault();
                 var btn = $(this);
                 var id = btn.data("id");
                 $.ajax({
@@ -229,6 +302,70 @@
                     }
                 });
             });
+
+            $('body').on('click', '.btnHot', function (e) {
+                e.preventDefault();
+                var btn = $(this);
+                var id = btn.data("id");
+                $.ajax({
+                    url: '/admin/products/IsHot',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        if (rs.success) {
+                            if (rs.hot) {
+                                btn.html("<i class = 'fa fa-check text-success'></i>")
+                            } else {
+                                btn.html("<i class = 'fas fa-times text-danger'></i>")
+                            }
+                        }
+                    }
+                });
+            });
+
+            $('body').on('click', '.btnFeature', function (e) {
+                e.preventDefault();
+                var btn = $(this);
+                var id = btn.data("id");
+                $.ajax({
+                    url: '/admin/products/isFeature',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        if (rs.success) {
+                            if (rs.isFe) {
+                                btn.html("<i class = 'fa fa-check text-success'></i>")
+                            } else {
+                                btn.html("<i class = 'fas fa-times text-danger'></i>")
+                            }
+                        }
+                    }
+                });
+            });
+
+            $('body').on('click', '.btnSale', function (e) {
+                e.preventDefault();
+                var btn = $(this);
+                var id = btn.data("id");
+                $.ajax({
+                    url: '/admin/products/IsSale',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        if (rs.success) {
+                            if (rs.isSa) {
+                                btn.html("<i class='fa fa-check text-success'></i>");
+                            } else {
+                                btn.html("<i class='fas fa-times text-danger'></i>");
+                            }
+                        }
+
+                    }
+                });
+            });
+
+
+
         });
     </script>
 }
