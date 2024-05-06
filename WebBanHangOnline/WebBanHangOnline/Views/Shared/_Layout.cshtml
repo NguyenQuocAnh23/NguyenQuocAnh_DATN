@@ -26,54 +26,15 @@
 
             <!-- Top Navigation -->
 
-            <div class="top_nav">
+            <div class="top_nav" style="background-color: black">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="top_nav_left">Miễn phí vận chuyển với hóa đơn từ trên 1.000.000 vnđ</div>
+                            <div class="top_nav_left" style="font-size:20px; "><i class="fa fa-phone" style="font-size:25px" ></i>   HOTLINE: 0355917834 | 0916618195</div>
                         </div>
-                        <div class="col-md-6 text-right">
-                            <div class="top_nav_right">
-                                <ul class="top_nav_menu">
-
-                                    <!-- Currency / Language / My Account -->
-
-                                    @*<li class="currency">
-                                        <a href="#">
-                                            usd
-                                            <i class="fa fa-angle-down"></i>
-                                        </a>
-                                        <ul class="currency_selection">
-                                            <li><a href="#">cad</a></li>
-                                            <li><a href="#">aud</a></li>
-                                            <li><a href="#">eur</a></li>
-                                            <li><a href="#">gbp</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="language">
-                                        <a href="#">
-                                            English
-                                            <i class="fa fa-angle-down"></i>
-                                        </a>
-                                        <ul class="language_selection">
-                                            <li><a href="#">French</a></li>
-                                            <li><a href="#">Italian</a></li>
-                                            <li><a href="#">German</a></li>
-                                            <li><a href="#">Spanish</a></li>
-                                        </ul>
-                                    </li>*@
-                                    <li class="account">
-                                        <a href="#">
-                                            Tài Khoản
-                                            <i class="fa fa-angle-down"></i>
-                                        </a>
-                                        <ul class="account_selection">
-                                            <li><a href="#" style="font-size:10px"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng nhập</a></li>
-                                            <li><a href="#" style="font-size:10px"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng ký</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="col-md-6 " >
+                            
+                            <div class="top_nav_left" style="font-size: 15px; text-align: right; margin-right: -70px"><i class="fa fa-truck" style="font-size:30px;" aria-hidden="true"></i>    Miễn phí vận chuyển với hóa đơn từ trên 1.000.000 vnđ</div>
                         </div>
                     </div>
                 </div>
@@ -81,26 +42,37 @@
 
             <!-- Main Navigation -->
 
-            <div class="main_nav_container">
+            <div class="main_nav_container" >
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <div class="logo_container">
                                 <a href="/">
-                                    <img src="~/Uploads/images/Banner_Logo.jpg" style="width:60px; height:60px" >
+                                    <img src="~/Uploads/images/Banner_Logo.jpg" style="width:60px; height:60px">
                                     <span style="color:darkblue">Bad</span><span>Shop</span>
                                 </a>
                             </div>
                             <nav class="navbar">
-                                @Html.Action("MenuTop","Menu")
-                                <ul class="navbar_user">
-                                    <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                                @Html.Action("MenuTop", "Menu")
+                                <ul class="navbar_user" style="margin-right:-78px">
+                                    @*<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>*@
+
                                     <li class="checkout">
                                         <a href="#">
                                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                            <span id="checkout_items" class="checkout_items">2</span>
+                                            @*<span id="checkout_items" class="checkout_items">2</span>*@
                                         </a>
+                                    </li>
+
+                                    <li class="account " style="background-color: white; ">
+                                        <a href="Tai khoan">
+                                            <i class="fa fa-user" aria-hidden="true" style="font-size: 35px; "></i>
+                                        </a>
+                                        <ul class="account_selection">
+                                            <li><a href="#" style="font-size:15px;width:100px; background-color:white ">Đăng nhập</a></li>
+                                            <li><a href="#" style="font-size:15px;width:100px; background-color:white ">Đăng ký</a></li>
+                                        </ul>
                                     </li>
                                 </ul>
                                 <div class="hamburger_container">
@@ -119,73 +91,65 @@
             <div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
             <div class="hamburger_menu_content text-right">
                 <ul class="menu_top_nav">
+
                     <li class="menu_item has-children">
                         <a href="#">
-                            usd
+                            Sản phẩm
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="menu_selection">
-                            <li><a href="#">cad</a></li>
-                            <li><a href="#">aud</a></li>
-                            <li><a href="#">eur</a></li>
-                            <li><a href="#">gbp</a></li>
+                            <li><a href="#">Vợt cầu lông</a></li>
+                            <li><a href="#">Áo cầu lông</a></li>
+                            <li><a href="#">Quần cầu lông</a></li>
+                            <li><a href="#">Váy cầu lông</a></li>
+                            <li><a href="#">Giầy cầu lông</a></li>
+                            <li><a href="#">Túi đựng</a></li>
+                            <li><a href="#">Phụ kiện</a></li>
                         </ul>
                     </li>
+
+
                     <li class="menu_item has-children">
                         <a href="#">
-                            English
+                            Tài khoản
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="menu_selection">
-                            <li><a href="#">French</a></li>
-                            <li><a href="#">Italian</a></li>
-                            <li><a href="#">German</a></li>
-                            <li><a href="#">Spanish</a></li>
+                            <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng nhập</a></li>
+                            <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng xuất</a></li>
                         </ul>
                     </li>
-                    <li class="menu_item has-children">
-                        <a href="#">
-                            My Account
-                            <i class="fa fa-angle-down"></i>
-                        </a>
-                        <ul class="menu_selection">
-                            <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
-                            <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu_item"><a href="#">home</a></li>
-                    <li class="menu_item"><a href="#">shop</a></li>
-                    <li class="menu_item"><a href="#">promotion</a></li>
-                    <li class="menu_item"><a href="#">pages</a></li>
-                    <li class="menu_item"><a href="#">blog</a></li>
-                    <li class="menu_item"><a href="#">contact</a></li>
+                    <li class="menu_item"><a href="#">Trang chủ</a></li>
+                    <li class="menu_item"><a href="#">Tin tức</a></li>
+                    <li class="menu_item"><a href="#">Liên hệ</a></li>
+                    <li class="menu_item"><a href="#">Blog</a></li>
+
                 </ul>
             </div>
         </div>
         @RenderBody()
 
         <!-- Newsletter -->
-
         @*<div class="newsletter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
-                            <h4>Newsletter</h4>
-                            <p>Subscribe to our newsletter and get 20% off your first purchase</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
+                                <h4>Newsletter</h4>
+                                <p>Subscribe to our newsletter and get 20% off your first purchase</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <form action="post">
+                                <div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
+                                    <input id="newsletter_email" type="email" placeholder="Your email" required="required" data-error="Valid email is required.">
+                                    <button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">subscribe</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <form action="post">
-                            <div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
-                                <input id="newsletter_email" type="email" placeholder="Your email" required="required" data-error="Valid email is required.">
-                                <button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">subscribe</button>
-                            </div>
-                        </form>
-                    </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
 
         <!-- Footer -->
 
@@ -196,8 +160,8 @@
                         <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
                             <ul class="footer_nav">
                                 @*<li><a href="#">Blog</a></li>
-                                <li><a href="#">FAQs</a></li>*@
-                                <li><a href="#">Contact us</a></li>
+                                    <li><a href="#">FAQs</a></li>*@
+                                <li><a href="#">Liên hệ với chúng tôi</a></li>
                             </ul>
                         </div>
                     </div>
@@ -216,7 +180,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="footer_nav_container">
-                            
+
                         </div>
                     </div>
                 </div>
