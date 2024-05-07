@@ -16,6 +16,39 @@
     @*@Styles.Render("~/Content/css")*@
     @Scripts.Render("~/bundles/modernizr")
 
+    <style>
+        .btn-info:hover {
+            cursor: pointer;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-top: none;
+            padding: 5px;
+        }
+
+            .options a {
+                display: block;
+                padding: 5px;
+                text-decoration: none;
+                color: #333;
+            }
+
+                .options a:hover {
+                    background-color: #f0f0f0;
+                }
+
+    </style>
+
 </head>
 <body>
     <div class="super_container">
@@ -26,7 +59,7 @@
 
             <!-- Top Navigation -->
 
-            <div class="top_nav" style="background-color: black">
+            @*<div class="top_nav" style="background-color: black">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
@@ -38,46 +71,69 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
 
             <!-- Main Navigation -->
 
-            <div class="main_nav_container" >
+            <div class="main_nav_container"  style="height:75px">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-right">
-                            <div class="logo_container">
+                            <div class="logo_container" style="margin-left: -135px; margin-top: 13px ">
                                 <a href="/">
-                                    <img src="~/Uploads/images/Banner_Logo.jpg" style="width:60px; height:60px">
-                                    <span style="color:darkblue">Bad</span><span>Shop</span>
+                                    <img src="/Uploads/images/Logo.jpg" style="width: 60px;height: 60px;position: relative;top: -8px;left: 5px;">
+                                    <span style="position: relative;color:darkblue;top: -16px;left: -12px;font-size: 40px;">QA</span>
+                                    <span style="position: relative;top: 12px;left: -65px;font-size: 28px;">Store</span>
                                 </a>
+
+                                <span style="color: black;font-size: 15px;left: 55px;position: relative;top: -13px;">
+                                    <i class="fa fa-headphones" style="font-size:17px"></i> <span style="font-size:12px; font-weight:600">HOTLINE: </span>  <span style="position: relative;font-family: revert-layer;font-size: 12px;top: 15px;left: -73px;">0355917834</span>
+                                </span>
+
+                                <div class="input-group input-group-sm" style="position: relative;top: -55px;left: 359px;width: 261px;">
+                                    @*@Html.TextBox("Searchtext", null, new { style = "width: 85%", placeholder = "Tiêu đề ..." })*@
+                                    <div class="search-container" style="">
+                                        <input type="text" name="searchtext" class="form-control" placeholder="Tìm sản phẩm..." onclick="showOptions()" style="background-color: aliceblue; width: 202px">
+                                        <div class="options" id="options" style="display: none; height: 64px; width: 242px; border-radius: 0 0 20px 20px;">
+                                            <p style=" border-bottom: 1px solid; font-size: 8px; text-align: left; "><i class="fa fa-fire"></i>Tìm kiếm nhiều nhất:</p>
+                                            <a href="#" style="position: absolute; border: 1px solid; border-radius: 20px; font-size: 9px; top: 24px;" >Vợt cầu lông lining</a>
+                                            <a href="#" style=" position: absolute; border: 1px solid; border-radius: 20px; font-size: 9px; top: 24px; left: 125px;" >Áo cầu lông yonex</a>
+                                        </div>
+                                    </div>
+                                    <span class="input-group-append">
+                                        <button type="submit" class="btn btn-info btn-flat" style="background-color: aliceblue; color:gray"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+
                             </div>
                             <nav class="navbar">
                                 @Html.Action("MenuTop", "Menu")
-                                <ul class="navbar_user" style="margin-right:-78px">
+                                <ul class="navbar_user" style="margin-top: -25px;margin-right: -195px;">
                                     @*<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                                         <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>*@
 
-                                    <li class="checkout">
+                                    <li class="checkout" style=" position: relative; top: -12px; left: 22px; ">
                                         <a href="#">
                                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                             @*<span id="checkout_items" class="checkout_items">2</span>*@
                                         </a>
                                     </li>
 
-                                    <li class="account " style="background-color: white; ">
+                                    <li class="account " style="background-color: white;position: relative;top: -12px;left: 53px;">
                                         <a href="Tai khoan">
-                                            <i class="fa fa-user" aria-hidden="true" style="font-size: 35px; "></i>
+                                            <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 35px; "></i>
                                         </a>
                                         <ul class="account_selection">
                                             <li><a href="#" style="font-size:15px;width:100px; background-color:white ">Đăng nhập</a></li>
                                             <li><a href="#" style="font-size:15px;width:100px; background-color:white ">Đăng ký</a></li>
                                         </ul>
                                     </li>
+                                    <li style=" position: relative; top: 22px; left: -96px; ">Giỏ hàng</li>
+                                    <li style=" position: relative; top: 22px; left: -65px; ">Tài khoản</li>
                                 </ul>
-                                <div class="hamburger_container">
+                                @*<div class="hamburger_container">
                                     <i class="fa fa-bars" aria-hidden="true"></i>
-                                </div>
+                                </div>*@
                             </nav>
                         </div>
                     </div>
@@ -86,7 +142,7 @@
 
         </header>
 
-        <div class="fs_menu_overlay"></div>
+        @*<div class="fs_menu_overlay"></div>
         <div class="hamburger_menu">
             <div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
             <div class="hamburger_menu_content text-right">
@@ -126,7 +182,7 @@
 
                 </ul>
             </div>
-        </div>
+        </div>*@
         @RenderBody()
 
         <!-- Newsletter -->
@@ -179,8 +235,15 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="footer_nav_container">
-
+                        <div class="footer_nav_container" style="background-color: #002254; margin-top: -52px; margin-left: -205px; margin-right: -210px; ">
+                            <div style="color:white; text-align:center">© CÔNG TY TNHH QA STORE</div>
+                            <div style="color:white; text-align:center; font-size:21px">Chủ sở hữu website: Nguyễn Quốc Anh</div>
+                            <div class="logo_container" style="text-align: center; font-size: 21px; position: relative; top: 45px; left: 682px; width: 163px; height: 46px; background-color: white; border-radius: 25px;">
+                                <a href="/" style=" position: relative; top: 11px; ">
+                                    <span style="color:darkblue;font-size: 28px;">QA</span>
+                                    <span style="font-size: 28px;">Store</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -189,13 +252,32 @@
 
     </div>
 
+
+    <script>
+
+        function showOptions() {
+            var options = document.getElementById("options");
+            options.style.display = "block";
+        }
+
+        document.addEventListener('click', function (event) {
+            var options = document.getElementById("options");
+            var searchInput = document.querySelector('input[name="searchtext"]');
+            if (!searchInput.contains(event.target) && !options.contains(event.target)) {
+                options.style.display = "none";
+            }
+        });
+
+
+    </script>
+
     <script src="~/Content/assets/js/jquery-3.2.1.min.js"></script>
     <script src="~/Content/assets/styles/bootstrap4/popper.js"></script>
     <script src="~/Content/assets/styles/bootstrap4/bootstrap.min.js"></script>
     <script src="~/Content/assets/plugins/Isotope/isotope.pkgd.min.js"></script>
     <script src="~/Content/assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
     <script src="~/Content/assets/plugins/easing/easing.js"></script>
-    <script src="~/Content/assets/js/custom.js"></script>
+    <script src="~/Content/assets/js/Custom2.js"></script>
 
     @*@Scripts.Render("~/bundles/jquery")*@
     @*@Scripts.Render("~/bundles/bootstrap")*@

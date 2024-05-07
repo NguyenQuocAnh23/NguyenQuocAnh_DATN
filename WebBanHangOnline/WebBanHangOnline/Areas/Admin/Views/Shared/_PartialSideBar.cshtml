@@ -21,7 +21,6 @@
             </div>
         </div>
     </div>-->
-
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -56,6 +55,27 @@
                 </li>
             </ul>*@
             </li>
+
+
+
+            <li class="nav-item">
+                <a href="/admin/role" class="nav-link">
+                    <i class="fas fa-user-tag" style=" margin-left: 4px; "></i>
+                    <p style=" margin-left: 5px; ">
+                        Quản lý vai trò
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/admin/account" class="nav-link">
+                    <i class="fas fa-user-tag" style=" margin-left: 4px; "></i>
+                    <p style=" margin-left: 5px; ">
+                        Quản lý tài khoản
+                    </p>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a href="/admin/news" class="nav-link">
                     <i class="nav-icon far fa-envelope"></i>
@@ -69,21 +89,21 @@
                 <a href="/admin/posts" class="nav-link">
                     <i class="nav-icon fas fa-edit"></i>
                     <p>
-                        Quản lý bài viết
+                        Quản lý Blog
                         @*<span class="right badge badge-danger">New</span>*@
                     </p>
                 </a>
             </li>
             <!--<li class="nav-item">
-                <a href="/admin/posts" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Quảng cáo-->
-                        @*<span class="right badge badge-danger">New</span>*@
-                    <!--</p>
-                </a>
-            </li>-->
-            <li class="nav-item " >
+    <a href="/admin/posts" class="nav-link">
+        <i class="nav-icon fas fa-th"></i>
+        <p>
+            Quảng cáo-->
+            @*<span class="right badge badge-danger">New</span>*@
+            <!--</p>
+        </a>
+    </li>-->
+            <li class="nav-item ">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-tasks"></i>
                     <p>
@@ -107,17 +127,36 @@
 
                 </ul>
             </li>
-            <!--<li class="nav-item">
-                <a href="/posts" class="nav-link">
+            <li class="nav-item">
+                <a href="javascript:document.getElementById('logOffForm').submit()" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
-                        Cấu hình hệ thống-->
+                        Đăng xuất
                         @*<span class="right badge badge-danger">New</span>*@
-                    <!--</p>
+                    </p>
                 </a>
-            </li>-->
+            </li>
+
+            <!--<li class="nav-item">
+    <a href="/posts" class="nav-link">
+        <i class="nav-icon fas fa-th"></i>
+        <p>
+            Cấu hình hệ thống-->
+            @*<span class="right badge badge-danger">New</span>*@
+            <!--</p>
+        </a>
+    </li>-->
         </ul>
     </nav>
     <!-- /.slidebar-menu -->
 </div>
-<!-- /.slidebar -->        
+<!-- /.slidebar -->
+
+@if (Request.IsAuthenticated)
+{
+    <div style="display:none">
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logOffForm" }))
+        {
+            @Html.AntiForgeryToken()}
+    </div>
+}    

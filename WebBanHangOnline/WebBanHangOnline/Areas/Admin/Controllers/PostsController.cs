@@ -43,7 +43,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 model.CreatedDate = DateTime.Now;
-                model.CategoryId = 3;
+                model.CategoryId = 17;
                 model.ModifierDate = DateTime.Now;
                 model.Alias = WebBanHangOnline.Models.Commons.Filter.ConvertToUnSign2(model.Title);
                 db.Posts.Add(model);

@@ -1,20 +1,188 @@
 ﻿@model IEnumerable<WebBanHangOnline.Models.EF.Category>
 
+<style>
+    /* Icon cho tam giác */
+    .dropdown-icon {
+        margin-left: 5px; /* Khoảng cách giữa chữ và icon */
+        transition: transform 0.3s ease-in-out; /* Hiệu ứng chuyển động */
+    }
+
+    /* Hiển thị icon "fa-sort-down" khi di chuột vào */
+    .dropdown:hover .dropdown-icon-up {
+        display: none;
+    }
+
+    /* Hiển thị icon "fa-sort-up" khi di chuột vào */
+    .dropdown:hover .dropdown-icon-down {
+        display: inline;
+    }
+
+    /* Ẩn droplist ban đầu */
+    .dropdown-content {
+        /*width:200px;
+        height:280px;*/
+        font-family: Arial;
+        line-height: 0px;
+        display: none;
+        position: absolute;
+        text-align: left;
+        background-color: white; /* Nền màu trắng */
+        color: black; /* Màu chữ đen */
+        padding: 0px; /* Khoảng cách lề bên trong */
+        border: 1px solid;
+    }
+
+    /* Hiển thị droplist khi hover lên ô "Sản phẩm" */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Các mục danh sách khi di chuột vào */
+    /*.dropdown-content li:hover {
+        background-color: aqua;
+
+    }*/
+
+    .dropdown-content li a {
+        display: block;
+        width: 180px;
+        font-weight: 700;
+        color: #022657;
+    }
+
+    .sub-dropdown {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        display: none;
+        background-color: white;
+        border: 1px solid #ccc;
+        z-index: 999;
+        height: 285px;
+        border-bottom: 1px solid;
+        /*line-height: 0px;*/
+    }
+
+        .sub-dropdown li {
+            padding: 5px;
+        }
+
+        .sub-dropdown li a {
+            width: 201px;
+            text-align:left;
+            text-transform: none !important;
+        }
+
+</style>
+
 @if (Model != null && Model.Any())
 {
-    <ul class="navbar_menu">
-        @foreach (var item in Model)
-        {
-            <li><a href="@item.Alias">@item.Title</a></li>
-        }
-        @*<li><a href="#">home</a></li>
-            <li><a href="#">shop</a></li>
-            <li><a href="#">promotion</a></li>
-            <li><a href="#">pages</a></li>
-            <li><a href="#">blog</a></li>
-            <li><a href="contact.html">contact</a></li>*@
-        
-
+    <ul class="navbar_menu" style="position: relative; left: 25px; margin-top: -20px; font-family: sans-serif; font-weight: 800">
+        <li><a href="/home" style="font-weight:600">Trang chủ</a></li>
+        <li class="dropdown" onmouseover="changeIcon(true)" onmouseout="changeIcon(false)">
+            <a href="#" style="height: 71px; font-weight: 600">
+                Sản phẩm
+                <span class="dropdown-icon dropdown-icon-up">
+                    <i class="fa fa-sort-up" style="position: relative; top: 3px;"></i>
+                </span>
+                <span class="dropdown-icon dropdown-icon-down" style="display: none;">
+                    <i class="fa fa-sort-down" style="position: relative; top: -3px;"></i>
+                </span>
+            </a>
+            <ul class="dropdown-content">
+                <li>
+                    <a href="#" onmouseover="showSubDropdown('sub1')" >Vợt cầu lông<i style="position:absolute;right:3px;top: 13px;" class="fa fa-plus"></i></a>
+                    <ul id="sub1" class="sub-dropdown">
+                        <li><a href="#">Vợt cầu lông yonex</a></li>
+                        <li><a href="#">Vợt cầu lông lining</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onmouseover="showSubDropdown('sub2')" >Quần cầu lông<i style="position:absolute;right:3px;top: 53px;" class="fa fa-plus"></i></a>
+                    <ul id="sub2" class="sub-dropdown">
+                        <li><a href="#">Quần cầu lông yonex</a></li>
+                        <li><a href="#">Quần cầu lông lining</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onmouseover="showSubDropdown('sub3')" >Váy cầu lông<i style="position:absolute;right:3px;top: 93px;" class="fa fa-plus"></i></a>
+                    <ul id="sub3" class="sub-dropdown">
+                        <li><a href="#">Váy cầu lông yonex</a></li>
+                        <li><a href="#">Váy cầu lông lining</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onmouseover="showSubDropdown('sub4')" ><i class="fa fa-tshirt"></i>Áo cầu lông<i style="position:absolute;right:3px;top: 133px;" class="fa fa-plus"></i></a>
+                    <ul id="sub4" class="sub-dropdown">
+                        <li><a href="#">Áo cầu lông yonex</a></li>
+                        <li><a href="#">Áo cầu lông lining</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onmouseover="showSubDropdown('sub5')" >Giày cầu lông<i style="position:absolute;right:3px;top: 173px;" class="fa fa-plus"></i></a>
+                    <ul id="sub5" class="sub-dropdown">
+                        <li><a href="#">Giày cầu lông yonex</a></li>
+                        <li><a href="#">Giày cầu lông lining</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onmouseover="showSubDropdown('sub6')" >Túi cầu lông<i style="position:absolute;right:3px;top: 213px;" class="fa fa-plus"></i></a>
+                    <ul id="sub6" class="sub-dropdown">
+                        <li><a href="#">Túi cầu lông yonex</a></li>
+                        <li><a href="#">Túi cầu lông lining</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onmouseover="showSubDropdown('sub7')" >Phụ kiện cầu lông<i style="position:absolute;right:3px;top: 253px;" class="fa fa-plus"></i></a>
+                    <ul id="sub7" class="sub-dropdown">
+                        <li><a href="#">Cuốn cán cầu lông</a></li>
+                        <li><a href="#">Dây cước cầu lông</a></li>
+                        <li><a href="#">Quả cầu lông</a></li>
+                        <li><a href="#">Tất cầu lông</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#" style="font-weight:600">Tin tức</a></li>
+        <li><a href="#" style="font-weight:600">Liên hệ</a></li>
+        <li><a href="#" style="font-weight:600">Blog</a></li>
     </ul>
-
 }
+
+<script>
+    var hideTimeout;
+
+    function changeIcon(isHover) {
+        var iconUp = document.querySelector('.dropdown-icon-up');
+        var iconDown = document.querySelector('.dropdown-icon-down');
+        if (isHover) {
+            iconUp.style.display = 'none';
+            iconDown.style.display = 'inline';
+        } else {
+            iconUp.style.display = 'inline';
+            iconDown.style.display = 'none';
+        }
+    }
+
+    function showSubDropdown(id) {
+        clearTimeout(hideTimeout);
+
+        // Ẩn tất cả các dropdown con khác trước khi hiển thị dropdown con mới
+        var allSubDropdowns = document.querySelectorAll('.sub-dropdown');
+        allSubDropdowns.forEach(function (item) {
+            item.style.display = 'none';
+        });
+
+        // Hiển thị dropdown con tương ứng với dropdown cha được di chuột vào
+        var subDropdown = document.getElementById(id);
+        subDropdown.style.display = 'block';
+    }
+
+    document.addEventListener('mouseleave', function (event) {
+        var allSubDropdowns = document.querySelectorAll('.sub-dropdown');
+        allSubDropdowns.forEach(function (item) {
+            item.style.display = 'none';
+        });
+    });
+    
+</script>

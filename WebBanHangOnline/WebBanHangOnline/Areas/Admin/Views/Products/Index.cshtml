@@ -52,76 +52,76 @@
             </div>
         </div>
         <div class="card-body">
-            @*<div class="row">
+            <div class="row">
                 <div class="col-6"></div>
                 <div class="col-3"></div>
                 <div class="col-3">
-                    @using (Html.BeginForm("index", "News", FormMethod.Get, new { }))
+                    @using (Html.BeginForm("index", "Products", FormMethod.Get, new { }))
                     {
                         <div class="input-group input-group-sm">
-                            @Html.TextBox("Searchtext", null, new { style = "width: 85%", placeholder = "Tiêu đề ..." })
-                            <input type="text" name="searchtext" class="form-control">
+                            @Html.TextBox("Searchtext", null, new { style = "width: 85%; background-color: aliceblue; ", placeholder = "Tên sản phẩm ..." })
+                            @*<input type="text" name="searchtext" class="form-control">*@
                             <span class="input-group-append">
-                                <button type="submit" class="btn btn-info btn-flat"><i class="fas fa-search"></i></button>
+                                <button type="submit" class="btn btn-info btn-flat" style="background-color: aliceblue; color: black; border-block: revert;"><i class="fas fa-search"></i></button>
                             </span>
                         </div>
                     }
-                </div>*@
-        </div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th><input type="checkbox" id="SelectAll" /></th>
-                    <th>STT</th>
-                    <th>Hình ảnh</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Danh mục</th>
-                    <th>Số lượng</th>
-                    <th>Giá</th>
-                    <th>Ngày tạo</th>
-                    <th>Home</th>
-                    <th>Hiển thị</th>
-                    @*<th>Hot</th>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="SelectAll" /></th>
+                        <th>STT</th>
+                        <th>Hình ảnh</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Danh mục</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                        <th>Ngày tạo</th>
+                        <th>Home</th>
+                        <th>Hiển thị</th>
+                        @*<th>Hot</th>
                     <th>Feature</th>
                     <th>Sale</th>*@
-                    <th style="width:150px"></th>
-                </tr>
-            </thead>
+                        <th style="width:150px"></th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                @if (Model != null && Model.Any())
-                {
-                    var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
-                    foreach (var item in Model)
+                <tbody>
+                    @if (Model != null && Model.Any())
                     {
-                        var strCheckHome = item.isHome ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
-                        var strCheck = item.IsActive ? " <i class = 'fa fa-check text-success'></i> " : "<i class = 'fas fa-times text-danger'></i>";
-                        var strCheckHot = item.isHot ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
-                        var strCheckFe = item.isFeature ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
-                        var strCheckSale = item.isSale ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
-
-                        var strImg = "";
-                        var CheckImage = item.ProductImages.FirstOrDefault(x => x.isDefault);
-                        if (CheckImage != null)
+                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                        foreach (var item in Model)
                         {
-                            strImg = CheckImage.Image;
-                        }
-                        <tr id="trow_@item.Id">
-                            <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
-                            <td>@i</td>
-                            <td><img class="imgproduct" data-id="@item.Id" src="@item.ProductImages.FirstOrDefault(x=>x.isDefault).Image" width="50" /></td>
-                            <td>@item.Title</td>
-                            <td>@item.ProductCategory.Title</td>
-                            <td>@item.Quantity</td>
-                            <td>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</td>
-                            <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                            <td style="text-align:left">
-                                <a href='#' data-id="@item.Id" class="btnHome">@Html.Raw(strCheckHome)</a>
-                            </td>
-                            <td style="text-align:left">
-                                <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
-                            </td>
-                            @*<td style="text-align:left">
+                            var strCheckHome = item.isHome ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                            var strCheck = item.IsActive ? " <i class = 'fa fa-check text-success'></i> " : "<i class = 'fas fa-times text-danger'></i>";
+                            var strCheckHot = item.isHot ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                            var strCheckFe = item.isFeature ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                            var strCheckSale = item.isSale ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+
+                            var strImg = "";
+                            var CheckImage = item.ProductImages.FirstOrDefault(x => x.isDefault);
+                            if (CheckImage != null)
+                            {
+                                strImg = CheckImage.Image;
+                            }
+                            <tr id="trow_@item.Id">
+                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                                <td>@i</td>
+                                <td><img class="imgproduct" data-id="@item.Id" src="@item.ProductImages.FirstOrDefault(x=>x.isDefault).Image" width="50" /></td>
+                                <td>@item.Title</td>
+                                <td>@item.ProductCategory.Title</td>
+                                <td>@item.Quantity</td>
+                                <td>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</td>
+                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                <td style="text-align:left">
+                                    <a href='#' data-id="@item.Id" class="btnHome">@Html.Raw(strCheckHome)</a>
+                                </td>
+                                <td style="text-align:left">
+                                    <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
+                                </td>
+                                @*<td style="text-align:left">
                                 <a href='#' data-id="@item.Id" class="btnHot">@Html.Raw(strCheckHot)</a>
                             </td>
                             <td style="text-align:left">
@@ -130,27 +130,29 @@
                             <td style="text-align:left">
                                 <a href='#' data-id="@item.Id" class="btnSale">@Html.Raw(strCheckSale)</a>
                             </td>*@
-                            <td>
-                                <a href="/admin/products/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
-                                <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
-                            </td>
-                        </tr>
-                        i++;
+                                <td>
+                                    <a href="/admin/products/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
+                                    <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+
                     }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4">Không có bản ghi nào!!!!</td>
+                        </tr>
+                    }
+                </tbody>
 
-                }
-                else
-                {
-                    <tr>
-                        <td colspan="4">Không có bản ghi nào!!!!</td>
-                    </tr>
-                }
-            </tbody>
-
-        </table>
-        <div style="text-align:center">
-            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </table>
+            <div style="text-align:center">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
         </div>
+        
     </div>
     <!-- /.card-body -->
     <div class="card-footer">
