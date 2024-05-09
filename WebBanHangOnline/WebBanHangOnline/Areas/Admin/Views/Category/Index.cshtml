@@ -41,10 +41,6 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Danh sách danh mục</h3>
-
-            <div class="card-tools">
-                <a href="/admin/category/add" class=" btn btn-primary">Thêm mới</a>
-            </div>
         </div>
         <div class="card-body">
             <table class="table table-hover">
@@ -53,7 +49,11 @@
                         <th>STT</th>
                         <th>Tên danh mục</th>
                         <th>Thứ tự</th>
-                        <th></th>
+                        <th style=" width: 125px; ">
+                            <div class="card-tools">
+                                <a href="/admin/category/add" class=" btn btn-primary" style=" background-color:darkblue; ">Thêm mới</a>
+                            </div>
+                        </th>
                     </tr>
                 </thead>
 
@@ -69,7 +69,7 @@
                                 <td>@item.Postions</td>
                                 <td>
                                     <a href="/admin/category/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
-                                    <a href="#" data-id ="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+                                    <a href="#" data-id ="@item.Id" class="btn btn-sm btn-danger btnDelete" style=" margin-left: 9px; ">Xóa</a>
                                 </td>
                             </tr>
                             i++;

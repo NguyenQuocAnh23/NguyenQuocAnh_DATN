@@ -58,24 +58,23 @@
         <header class="header trans_300">
 
             <!-- Top Navigation -->
-
             @*<div class="top_nav" style="background-color: black">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="top_nav_left" style="font-size:20px; "><i class="fa fa-phone" style="font-size:25px" ></i>   HOTLINE: 0355917834 | 0916618195</div>
-                        </div>
-                        <div class="col-md-6 " >
-                            
-                            <div class="top_nav_left" style="font-size: 15px; text-align: right; margin-right: -70px"><i class="fa fa-truck" style="font-size:30px;" aria-hidden="true"></i>    Miễn phí vận chuyển với hóa đơn từ trên 1.000.000 vnđ</div>
-                        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="top_nav_left" style="font-size:20px; "><i class="fa fa-phone" style="font-size:25px" ></i>   HOTLINE: 0355917834 | 0916618195</div>
+                    </div>
+                    <div class="col-md-6 " >
+
+                        <div class="top_nav_left" style="font-size: 15px; text-align: right; margin-right: -70px"><i class="fa fa-truck" style="font-size:30px;" aria-hidden="true"></i>    Miễn phí vận chuyển với hóa đơn từ trên 1.000.000 vnđ</div>
                     </div>
                 </div>
-            </div>*@
+            </div>
+        </div>*@
 
             <!-- Main Navigation -->
 
-            <div class="main_nav_container"  style="height:75px">
+            <div class="main_nav_container" style="height:75px">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-right">
@@ -96,8 +95,8 @@
                                         <input type="text" name="searchtext" class="form-control" placeholder="Tìm sản phẩm..." onclick="showOptions()" style="background-color: aliceblue; width: 202px">
                                         <div class="options" id="options" style="display: none; height: 64px; width: 242px; border-radius: 0 0 20px 20px;">
                                             <p style=" border-bottom: 1px solid; font-size: 8px; text-align: left; "><i class="fa fa-fire"></i>Tìm kiếm nhiều nhất:</p>
-                                            <a href="#" style="position: absolute; border: 1px solid; border-radius: 20px; font-size: 9px; top: 24px;" >Vợt cầu lông lining</a>
-                                            <a href="#" style=" position: absolute; border: 1px solid; border-radius: 20px; font-size: 9px; top: 24px; left: 125px;" >Áo cầu lông yonex</a>
+                                            <a href="#" style="position: absolute; border: 1px solid; border-radius: 20px; font-size: 9px; top: 24px;">Vợt cầu lông lining</a>
+                                            <a href="#" style=" position: absolute; border: 1px solid; border-radius: 20px; font-size: 9px; top: 24px; left: 125px;">Áo cầu lông yonex</a>
                                         </div>
                                     </div>
                                     <span class="input-group-append">
@@ -110,7 +109,7 @@
                                 @Html.Action("MenuTop", "Menu")
                                 <ul class="navbar_user" style="margin-top: -25px;margin-right: -195px;">
                                     @*<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>*@
+            <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>*@
 
                                     <li class="checkout" style=" position: relative; top: -12px; left: 22px; ">
                                         <a href="#">
@@ -119,27 +118,58 @@
                                         </a>
                                     </li>
 
-                                    <li class="account " style="background-color: white;position: relative;top: -12px;left: 53px;">
-                                        <a href="Tai khoan">
-                                            <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 35px; "></i>
-                                        </a>
-                                        <ul class="account_selection">
-                                            <li><a href="#" style="font-size:15px;width:100px; background-color:white ">Đăng nhập</a></li>
-                                            <li><a href="#" style="font-size:15px;width:100px; background-color:white ">Đăng ký</a></li>
-                                        </ul>
-                                    </li>
-                                    <li style=" position: relative; top: 22px; left: -96px; ">Giỏ hàng</li>
-                                    <li style=" position: relative; top: 22px; left: -65px; ">Tài khoản</li>
+                                    @if (!Request.IsAuthenticated)
+                                    {
+
+
+                                        <li class="account " style="background-color: white;position: relative;top: -12px;left: 53px;">
+                                            <a href="">
+                                                <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 35px; "></i>
+                                            </a>
+                                            <ul class="account_selection">
+                                                <li><a href="/account/login" style="font-size: 15px; width: 100px; margin-left: -13px; background-color: white ">Đăng nhập</a></li>
+                                                <li><a href="/account/register" style="font-size: 15px; width: 100px; margin-left: -13px; border-radius: 0 0 5px 4px; background-color: white ">Đăng ký</a></li>
+                                            </ul>
+                                        </li>
+
+
+                                        <li style=" position: relative; top: 22px; left: -96px; ">Giỏ hàng</li>
+
+
+                                        <li style=" position: relative; top: 22px; left: -65px; ">Tài khoản</li>
+                                    }
+                                    else
+                                    {
+                                        <li class="account " style="background-color: white;position: relative;top: -12px;left: 53px;">
+                                            <a href="">
+                                                <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 35px; "></i>
+                                            </a>
+                                            <ul class="account_selection">
+                                                <li><a href="" style="font-size: 15px; width: 100px; margin-left: -13px; background-color: white ">Thông tin</a></li>
+                                                <li><a href="javascript:document.getElementById('logOffForm').submit()" style="font-size: 15px; width: 100px; margin-left: -13px; border-radius: 0 0 5px 4px; background-color: white ">Đăng xuất</a></li>
+                                            </ul>
+                                        </li>
+                                        <li style=" position: relative; top: 22px; left: -96px; ">Giỏ hàng</li>
+                                        <li style=" position: relative; top: 22px; width: 68px; left: -65px; ">@User.Identity.Name</li>
+                                    }
                                 </ul>
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <div style="display:none">
+                                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logOffForm" }))
+                                        {
+                                            @Html.AntiForgeryToken()}
+                                    </div>
+                                }
                                 @*<div class="hamburger_container">
-                                    <i class="fa fa-bars" aria-hidden="true"></i>
-                                </div>*@
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>*@
                             </nav>
                         </div>
                     </div>
                 </div>
             </div>
-
+            
         </header>
 
         @*<div class="fs_menu_overlay"></div>
@@ -235,7 +265,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="footer_nav_container" style="background-color: #002254; margin-top: -52px; margin-left: -205px; margin-right: -210px; ">
+                        <div class="footer_nav_container" style="background-color: #002254; margin-top: -52px; margin-left: -213px; margin-right: -213px; ">
                             <div style="color:white; text-align:center">© CÔNG TY TNHH QA STORE</div>
                             <div style="color:white; text-align:center; font-size:21px">Chủ sở hữu website: Nguyễn Quốc Anh</div>
                             <div class="logo_container" style="text-align: center; font-size: 21px; position: relative; top: 45px; left: 682px; width: 163px; height: 46px; background-color: white; border-radius: 25px;">

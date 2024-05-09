@@ -24,33 +24,36 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Danh sách tài khoản</h3>
-
-            <div class="card-tools">
-                <a href="/admin/account/create" class="btn btn-success">Thêm mới</a>
-            </div>
         </div>
         <div class="card-body">
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Tên tài khoản</th>
-                        <th>Họ và tên</th>
                         <th>Email</th>
-                        <th></th>
+                        <th>Tên tài khoản</th>
+                        <th>Họ tên người dùng</th>
+                        <th>SDT</th>
+                        <th style="width:110px">
+                            <div class="card-tools">
+                                <a href="/admin/account/create" class="btn btn-success" style=" background-color: darkblue; font-size: 14px;">Thêm mới</a>
+                            </div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     @if (Model != null && Model.Any())
                     {
                         var i = 1;
+                        
                         foreach (var item in Model)
                         {
                             <tr>
                                 <td>@i</td>
+                                <td>@item.Email</td>
                                 <td>@item.UserName</td>
                                 <td>@item.Fullname</td>
-                                <td>@item.Email</td>
+                                <td>@item.Phone</td>
                                 <td>
                                     <a href="/admin/account/edit/@item.UserName" class="btn btn-sm btn-primary">Sửa</a>
                                     <a href="#" data-user="@item.UserName" class="btn btn-sm btn-danger btnDelete">Xóa</a>

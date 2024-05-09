@@ -45,22 +45,22 @@
         <div class="card-header">
             <h3 class="card-title">@ViewBag.Title</h3>
 
-            <div class="card-tools">
-                <a href="/admin/productcategory/add" class=" btn btn-primary">Thêm mới</a>
-                @*<a href="#" class="btn btn-danger" id="BtnDeleteAll">Xóa</a>*@
-            </div>
+            
         </div>
         <div class="card-body">
             
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        @*<th><input type="checkbox" id="SelectAll" /></th>*@
                         <th>STT</th>
                         <th>Ảnh nền</th>
                         <th>Tiêu đề</th>
                         <th>Ngày tạo</th>
-                        <th style="width:150px"></th>
+                        <th style="width:118px">
+                            <div class="card-tools">
+                                <a href="/admin/productcategory/add" class=" btn btn-primary" style=" font-size: 14px; background-color: darkblue;">Thêm mới</a>
+                            </div>
+                        </th>
                     </tr>
                 </thead>
 
@@ -70,16 +70,11 @@
                         var i = 1;
                         foreach (var item in Model)
                         {
-                            //var strCheck = item.IsActive ? " <i class = 'fa fa-check text-success'></i> " : "<i class = 'fas fa-times text-danger'></i>";
                             <tr id="trow_@item.Id">
-                                @*<td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>*@
                                 <td>@i</td>
                                 <td><img src="@item.Icon" width="50" /></td>
                                 <td>@item.Title</td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                @*<td style="text-align:left">
-                                    <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
-                                </td>*@
                                 <td>
                                     <a href="/admin/productcategory/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
                                     <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
@@ -115,65 +110,7 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            //$('body').on('click', '#BtnDeleteAll', function (e) {
-            //    e.preventDefault();
-            //    var str = "";
-            //    var checkbox = $(this).parents('.card').find('tr td input:checkbox');
-            //    var i = 0;
-            //    checkbox.each(function () {
-            //        if (this.checked) {
-            //            checkbox.attr('selected', 'checked');
-            //            var _id = $(this).val();
-            //            if (i === 0) {
-            //                str += _id;
-            //            } else {
-            //                str += "," + _id;
-            //            }
-            //            i++;
-            //        } else {
-            //            checkbox.attr('selected', '');
-            //        }
-            //    });
-            //    if (str.length > 0) {
-            //        var conf = confirm('Bạn có muốn xóa bản ghi này không?');
-            //        if (conf === true) {
-            //            $.ajax({
-            //                url: '/admin/productcategory/deleteAll',
-            //                type: 'POST',
-            //                data: { ids: str },
-            //                success: function (rs) {
-            //                    if (rs.success) {
-            //                        location.reload();
-            //                    }
-            //                }
-            //            });
-            //        }
-            //    }
-            //});
-            //$('body').on('change', '#SelectAll', function () {
-            //    var checkStatus = this.checked;
-            //    var checkbox = $(this).parents('.card-body').find('tr td input:checkbox');
-            //    checkbox.each(function () {
-            //        this.checked = checkStatus;
-            //        if (this.checked == false) {
-            //            checkbox.attr('selected', 'checked');
-            //        }
-            //    });
-            //});
-            //$('body').on('change', '.cbkItem', function () {
-            //    var selectAllCheckbox = $('#SelectAll');
-            //    var checkbox = $(this).parents('.card-body').find('tr td input:checkbox');
-            //    var allChecked = true;
-
-            //    checkbox.each(function () {
-            //        if (!this.checked) {
-            //            allChecked = false;
-            //            return false;
-            //        }
-            //    });
-
-            //    selectAllCheckbox.prop('checked', allChecked);
-            //});
+            
             $('body').on('click', '.btnDelete', function () {
                 var id = $(this).data("id");
                 var conf = confirm('Bạn có muốn xóa bản ghi này không?');

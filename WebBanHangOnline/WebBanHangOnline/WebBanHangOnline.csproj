@@ -191,6 +191,7 @@
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\SettingHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
@@ -324,11 +325,17 @@
     <Content Include="Content\assets\images\admin1.png" />
     <Content Include="Content\assets\images\admin2.png" />
     <Content Include="Content\assets\images\admin3.png" />
+    <Content Include="Content\assets\images\Back_Regis.png" />
     <Content Include="Content\assets\images\BannerPic.png" />
     <Content Include="Content\assets\images\Banner_Logo.jpg" />
+    <Content Include="Content\assets\images\In.png" />
+    <Content Include="Content\assets\images\Map.png" />
+    <Content Include="Content\assets\images\Regis.png" />
     <Content Include="Content\assets\images\Test2.png" />
     <Content Include="Content\assets\js\categories_custom.js" />
+    <Content Include="Content\assets\js\categories_custom2.js" />
     <Content Include="Content\assets\js\contact_custom.js" />
+    <Content Include="Content\assets\js\contact_custom2.js" />
     <Content Include="Content\assets\js\custom.js" />
     <Content Include="Content\assets\js\Custom2.js" />
     <Content Include="Content\assets\js\jquery-3.2.1.min.js" />
@@ -3385,6 +3392,8 @@
     <Content Include="Views\Menu\_MenuProductCategory.cshtml" />
     <Content Include="Views\Menu\_MenuArrivals.cshtml" />
     <Content Include="Views\Products\Partial_ItemByCateId.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
