@@ -73,14 +73,15 @@
             text-transform: none !important;
         }
 
+
 </style>
 
 @if (Model != null && Model.Any())
 {
-    <ul class="navbar_menu" style="position: relative; left: 25px; margin-top: -20px; font-family: sans-serif; font-weight: 800">
+    <ul class="navbar_menu" style="position: relative; left: -31px; margin-top: -20px; font-family: sans-serif; font-weight: 800">
         <li><a href="/home" style="font-weight:600">Trang chủ</a></li>
         <li class="dropdown" onmouseover="changeIcon(true)" onmouseout="changeIcon(false)">
-            <a href="products" style="height: 71px; font-weight: 600">
+            <a href="/products" style="height: 71px; font-weight: 600">
                 Sản phẩm
                 <span class="dropdown-icon dropdown-icon-up">
                     <i class="fa fa-sort-up" style="position: relative; top: 3px;"></i>
@@ -91,61 +92,60 @@
             </a>
             <ul class="dropdown-content">
                 <li>
-                    <a href="#" onmouseover="showSubDropdown('sub1')" >Vợt cầu lông<i style="position:absolute;right:3px;top: 13px;" class="fa fa-plus"></i></a>
-                    <ul id="sub1" class="sub-dropdown">
-                        <li><a href="#">Vợt cầu lông yonex</a></li>
-                        <li><a href="#">Vợt cầu lông lining</a></li>
+                    <a href="/danh-muc-san-pham/vot-cau-long-5" onmouseover="showSubDropdown('sub1')" >Vợt cầu lông<i style="position:absolute;right:3px;top: 13px;" class="fa fa-plus"></i></a>
+                    <ul id="sub1" class="sub-dropdown" style=" top: -1px; height: 281px; border-top: 1px solid;">
+                        <li><a href="/danh-muc-san-pham/vot-cau-long-yonex-18">Vợt cầu lông yonex</a></li>
+                        <li><a href="/danh-muc-san-pham/vot-cau-long-lining-19">Vợt cầu lông lining</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#" onmouseover="showSubDropdown('sub2')" >Quần cầu lông<i style="position:absolute;right:3px;top: 53px;" class="fa fa-plus"></i></a>
-                    <ul id="sub2" class="sub-dropdown">
-                        <li><a href="#">Quần cầu lông yonex</a></li>
-                        <li><a href="#">Quần cầu lông lining</a></li>
+                    <a href="/danh-muc-san-pham/quan-cau-long-2" onmouseover="showSubDropdown('sub2')" >Quần cầu lông<i style="position:absolute;right:3px;top: 53px;" class="fa fa-plus"></i></a>
+                    <ul id="sub2" class="sub-dropdown" style=" top: -1px; height: 281px; border-top: 1px solid;">
+                        <li><a href="/danh-muc-san-pham/quan-cau-long-yonex-16">Quần cầu lông yonex</a></li>
+                        <li><a href="/danh-muc-san-pham/quan-cau-long-lining-17">Quần cầu lông lining</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#" onmouseover="showSubDropdown('sub3')" >Váy cầu lông<i style="position:absolute;right:3px;top: 93px;" class="fa fa-plus"></i></a>
-                    <ul id="sub3" class="sub-dropdown">
-                        <li><a href="#">Váy cầu lông yonex</a></li>
-                        <li><a href="#">Váy cầu lông lining</a></li>
+                    <a href="/danh-muc-san-pham/vay-cau-long-11" onmouseover="showSubDropdown('sub3')" >Váy cầu lông<i style="position:absolute;right:3px;top: 93px;" class="fa fa-plus"></i></a>
+                    <ul id="sub3" class="sub-dropdown" style=" top: -1px; height: 281px; border-top: 1px solid;">
+                        <li><a href="/danh-muc-san-pham/vay-cau-long-yonex-22">Váy cầu lông yonex</a></li>
+                        <li><a href="/danh-muc-san-pham/vay-cau-long-lining-23">Váy cầu lông lining</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#" onmouseover="showSubDropdown('sub4')" ><i class="fa fa-tshirt"></i>Áo cầu lông<i style="position:absolute;right:3px;top: 133px;" class="fa fa-plus"></i></a>
-                    <ul id="sub4" class="sub-dropdown">
-                        <li><a href="#">Áo cầu lông yonex</a></li>
-                        <li><a href="#">Áo cầu lông lining</a></li>
+                    <a href="/danh-muc-san-pham/ao-cau-long-1" onmouseover="showSubDropdown('sub4')" >Áo cầu lông<i style="position:absolute;right:3px;top: 133px;" class="fa fa-plus"></i></a>
+                    <ul id="sub4" class="sub-dropdown" style=" top: -1px; height: 281px; border-top: 1px solid;">
+                        <li><a href="/danh-muc-san-pham/ao-cau-long-yonex-14">Áo cầu lông yonex</a></li>
+                        <li><a href="/danh-muc-san-pham/ao-cau-long-lining-15">Áo cầu lông lining</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#" onmouseover="showSubDropdown('sub5')" >Giày cầu lông<i style="position:absolute;right:3px;top: 173px;" class="fa fa-plus"></i></a>
-                    <ul id="sub5" class="sub-dropdown">
-                        <li><a href="#">Giày cầu lông yonex</a></li>
-                        <li><a href="#">Giày cầu lông lining</a></li>
+                    <a href="/danh-muc-san-pham/giay-cau-long-10" onmouseover="showSubDropdown('sub5')" >Giày cầu lông<i style="position:absolute;right:3px;top: 173px;" class="fa fa-plus"></i></a>
+                    <ul id="sub5" class="sub-dropdown" style=" top: -1px; height: 281px; border-top: 1px solid;">
+                        <li><a href="/danh-muc-san-pham/giay-cau-long-yonex-20">Giày cầu lông yonex</a></li>
+                        <li><a href="/danh-muc-san-pham/giay-cau-long-lining-21">Giày cầu lông lining</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#" onmouseover="showSubDropdown('sub6')" >Túi cầu lông<i style="position:absolute;right:3px;top: 213px;" class="fa fa-plus"></i></a>
-                    <ul id="sub6" class="sub-dropdown">
-                        <li><a href="#">Túi cầu lông yonex</a></li>
-                        <li><a href="#">Túi cầu lông lining</a></li>
+                    <a href="/danh-muc-san-pham/tui-cau-long-12" onmouseover="showSubDropdown('sub6')" >Túi cầu lông<i style="position:absolute;right:3px;top: 213px;" class="fa fa-plus"></i></a>
+                    <ul id="sub6" class="sub-dropdown" style=" top: -1px; height: 281px; border-top: 1px solid;">
+                        <li><a href="/danh-muc-san-pham/tui-cau-long-yonex-24">Túi cầu lông yonex</a></li>
+                        <li><a href="/danh-muc-san-pham/tui-cau-long-lining-25">Túi cầu lông lining</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#" onmouseover="showSubDropdown('sub7')" >Phụ kiện cầu lông<i style="position:absolute;right:3px;top: 253px;" class="fa fa-plus"></i></a>
-                    <ul id="sub7" class="sub-dropdown">
-                        <li><a href="#">Cuốn cán cầu lông</a></li>
-                        <li><a href="#">Dây cước cầu lông</a></li>
-                        <li><a href="#">Quả cầu lông</a></li>
-                        <li><a href="#">Tất cầu lông</a></li>
+                    <a href="/danh-muc-san-pham/phu-kien-cau-long-13" onmouseover="showSubDropdown('sub7')" >Phụ kiện cầu lông<i style="position:absolute;right:3px;top: 253px;" class="fa fa-plus"></i></a>
+                    <ul id="sub7" class="sub-dropdown" style=" top: -1px; height: 281px; border-top: 1px solid;">
+                        <li><a href="/danh-muc-san-pham/cuon-can-cau-long-26">Cuốn cán cầu lông</a></li>
+                        <li><a href="/danh-muc-san-pham/day-cang-vot-27">Dây cước cầu lông</a></li>
+                        <li><a href="/danh-muc-san-pham/qua-cau-long-28">Quả cầu lông</a></li>
+                        <li><a href="/danh-muc-san-pham/tat-chan-29">Tất cầu lông</a></li>
                     </ul>
                 </li>
             </ul>
         </li>
         <li><a href="" style="font-weight:600">Tin tức</a></li>
-        <li><a href="contact" style="font-weight:600">Liên hệ</a></li>
-        <li><a href="#" style="font-weight:600">Blog</a></li>
+        <li><a href="/contact" style="font-weight:600">Liên hệ</a></li>
     </ul>
 }
 

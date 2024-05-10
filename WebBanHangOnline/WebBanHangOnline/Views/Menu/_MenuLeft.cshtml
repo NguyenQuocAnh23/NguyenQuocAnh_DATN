@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebBanHangOnline.Models.EF.ProductCategory>
+
+@if (Model != null && Model.Any())
+{
+    <ul class="sidebar_categories">
+            <li><a href="/danh-muc-san-pham/vot-cau-long-5" style="font-size: 23px;position: relative;top: 4px;left: -4px;font-weight: 600;"><i class="fa fa-angle-right" aria-hidden="true"></i>  Vợt cầu lông</a></li>
+            <li><a href="/danh-muc-san-pham/vot-cau-long-yonex-18" style=" position: relative; left: -4px; ">Vợt cầu lông Yonex</a></li>
+            <li><a href="/danh-muc-san-pham/vot-cau-long-lining-19" style=" position: relative; left: -4px; ">Vợt cầu lông Lining</a></li>
+            <li><a href="/danh-muc-san-pham/quan-cau-long-2" style="font-size: 23px;position: relative;top: 4px;left: -4px;font-weight: 600;"><i class="fa fa-angle-right" aria-hidden="true"></i>  Quần cầu lông</a></li>
+            <li><a href="/danh-muc-san-pham/quan-cau-long-yonex-16" style=" position: relative; left: -4px; ">Quần cầu lông Yonex</a></li>
+            <li><a href="/danh-muc-san-pham/quan-cau-long-lining-17" style=" position: relative; left: -4px; ">Quần cầu lông Lining</a></li>
+            <li><a href="/danh-muc-san-pham/vay-cau-long-11" style="font-size: 23px;position: relative;left: -4px;font-weight: 600;"><i class="fa fa-angle-right" aria-hidden="true"></i>  Váy cầu lông </a></li>
+            <li><a href="/danh-muc-san-pham/vay-cau-long-yonex-22" style=" position: relative; left: -4px; ">Váy cầu lông Yonex</a></li>
+            <li><a href="/danh-muc-san-pham/vay-cau-long-lining-23" style=" position: relative; left: -4px; ">Váy cầu lông Lining</a></li>
+            <li><a href="/danh-muc-san-pham/ao-cau-long-1" style="font-size: 23px;position: relative;left: -4px;font-weight: 600;"><i class="fa fa-angle-right" aria-hidden="true"></i>  Áo cầu lông </a></li>
+            <li><a href="/danh-muc-san-pham/ao-cau-long-yonex-14" style=" position: relative; left: -4px; ">Áo cầu lông Yonex</a></li>
+            <li><a href="/danh-muc-san-pham/ao-cau-long-lining-15" style=" position: relative; left: -4px; ">Áo cầu lông Lining</a></li>
+            <li><a href="/danh-muc-san-pham/giay-cau-long-10" style="font-size: 23px;position: relative;left: -4px;font-weight: 600;"><i class="fa fa-angle-right" aria-hidden="true"></i>  Giày cầu lông </a></li>
+            <li><a href="/danh-muc-san-pham/giay-cau-long-yonex-20" style=" position: relative; left: -4px; ">Giày cầu lông Yonex</a></li>
+            <li><a href="/danh-muc-san-pham/giay-cau-long-lining-21" style=" position: relative; left: -4px; ">Giày cầu lông Lining</a></li>
+            <li><a href="/danh-muc-san-pham/tui-cau-long-12" style="font-size: 23px;position: relative;left: -4px;font-weight: 600;"><i class="fa fa-angle-right" aria-hidden="true"></i>  Túi cầu lông </a></li>
+            <li><a href="/danh-muc-san-pham/tui-cau-long-yonex-24" style=" position: relative; left: -4px; ">Túi cầu lông Yonex</a></li>
+            <li><a href="/danh-muc-san-pham/tui-cau-long-lining-25" style=" position: relative; left: -4px; ">Túi cầu lông Lining</a></li>
+            <li><a href="/danh-muc-san-pham/phu-kien-cau-long-13" style="font-size: 23px;position: relative;left: -4px;font-weight: 600;"><i class="fa fa-angle-right" aria-hidden="true"></i>  Phụ kiện cầu lông</a></li>
+            <li><a href="/danh-muc-san-pham/cuon-can-cau-long-26" style=" position: relative; left: -4px; ">Cuốn cán cầu lông</a></li>
+            <li><a href="/danh-muc-san-pham/day-cang-vot-27" style=" position: relative; left: -4px; ">Dây cước cầu lông</a></li>
+            <li><a href="/danh-muc-san-pham/qua-cau-long-28" style=" position: relative; left: -4px; ">Quả cầu lông</a></li>
+            <li><a href="/danh-muc-san-pham/tat-chan-29" style=" position: relative; left: -4px; ">Tất cầu lông</a></li>
+        </ul>
+
+    @*<ul class="sidebar_categories">
+            @foreach (var item in Model)
+            {
+                if (ViewBag.CateId == item.Id)
+                {
+                    <li class="active"><a href="/danh-muc-san-pham/@item.Alias-@(item.Id)"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>@item.Title</a></li>
+                }
+                else
+                {
+                    <li><a href="/danh-muc-san-pham/@item.Alias-@(item.Id)">@item.Title</a></li>
+                }
+            }
+
+        </ul>*@
+}

@@ -10,7 +10,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin" class="nav-link">Trang chủ</a>
+            <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/admin/account" class="nav-link">Danh sách tài khoản</a>
@@ -45,7 +45,7 @@
                     @if (Model != null && Model.Any())
                     {
                         var i = 1;
-                        
+
                         foreach (var item in Model)
                         {
                             <tr>
@@ -55,14 +55,34 @@
                                 <td>@item.Fullname</td>
                                 <td>@item.Phone</td>
                                 <td>
-                                    <a href="/admin/account/edit/@item.UserName" class="btn btn-sm btn-primary">Sửa</a>
-                                    <a href="#" data-user="@item.UserName" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+                                    <a href="#" data-user="@item.UserName" class="btn btn-sm btn-danger btnDelete" style="width: 84px">Xóa</a>
                                 </td>
                             </tr>
                             i++;
                         }
 
                     }
+                    @*@if (Model != null && Model.Any())
+                    {
+                        var sortedModel = Model.OrderByDescending(item => item.CreatedDate); // Sắp xếp danh sách theo thời gian tạo tài khoản giảm dần
+                        var i = 1;
+
+                        foreach (var item in sortedModel)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.Email</td>
+                                <td>@item.UserName</td>
+                                <td>@item.Fullname</td>
+                                <td>@item.Phone</td>
+                                <td>
+                                    <a href="#" data-user="@item.UserName" class="btn btn-sm btn-danger btnDelete" style="width: 84px">Xóa</a>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    }*@
+
                 </tbody>
             </table>
         </div>

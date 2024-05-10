@@ -1,0 +1,134 @@
+﻿@model PagedList.PagedList<WebBanHangOnline.Models.EF.Product>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "Danh sách sẩn phẩm";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_styles.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_responsive.css">
+
+<h2>Index</h2>
+
+<div class="container product_section_container">
+    <div class="row">
+        <div class="col product_section clearfix" style=" margin-top: -151px; ">
+
+            <!-- Breadcrumbs -->
+
+            <div class="breadcrumbs d-flex flex-row align-items-center" style="width: 1550px; height: 33px; position: relative; top: 29px; left: -203px; ">
+                <ul style=" margin-left: 72px;">
+                    <li><a href="/home">Trang chủ</a></li>
+                    <li class="active"><a href="/"><i class="fa fa-angle-right" aria-hidden="true"></i>@ViewBag.CateName</a></li>
+                </ul>
+            </div>
+
+            <!-- Sidebar -->
+
+            <div class="sidebar">
+                <div class="sidebar_section" style=" position: relative; left: -119px; top: -26px; width: 347px; border-right: 1px solid;">
+                    <div class="sidebar_title" style=" font-size: 23px; background-color: black; height: 40px; width: 267px; border-radius: 10px 0px 50px 10px; position: relative; left: -13px; ">
+                        <span style=" position: relative; top: 9px; left: 8px; color: ghostwhite; font-size: 22px;">DANH MỤC SẢN PHẨM</span>
+                    </div>
+                    @Html.Action("MenuLeft", "Menu", new {id = ViewBag.CateId})
+                </div>
+
+
+            </div>
+
+            <!-- Main Content -->
+
+            <div class="main_content">
+
+                <!-- Products -->
+
+                <div class="products_iso">
+                    <div class="row">
+                        <div class="col">
+
+                            <!-- Product Sorting -->
+
+                            <div class="product_sorting_container product_sorting_container_top" style=" position: relative; top: -26px; left: -12px; ">
+                                <div style="position: relative; background-color: black; left: 92px; border-radius: 50px 10px 10px 0px">
+                                    <span style="color: ghostwhite; position: relative; top: 5px; left: 17px; font-weight: 500; font-size: 21px; font-family: sans-serif;">SẢN PHẨM CẦU LÔNG</span>
+                                    <ul class="product_sorting">
+                                        <li style="position: relative; left: 472px; background-color: black; border: black; width: 174px; border-radius: 34px; text-align: right; ">
+                                            <span class="type_sorting_text" style=" color: white; position: relative; left: -3px; ">Sắp xếp mặc định</span>
+                                            <i class="fa fa-angle-down" style="position: relative;left: 2px;color: white;"></i>
+                                            <ul class="sorting_type">
+                                                <li class="type_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Sắp xếp mặc định</span></li>
+                                                <li class="type_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Giá tăng dần</span></li>
+                                                <li class="type_sorting_btn" data-isotope-option='{ "sortBy": "name" }'><span>Theo thứ tự chữ cái</span></li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+
+
+                                <!-- Product Grid -->
+
+                                <div class="product-grid" style="position: relative;left: 94px;top: -33px;height: 1140px;">
+
+                                    <!-- Product 1 -->
+
+                                    @if (Model != null && Model.Any())
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                            var strImge = "";
+                                            var img = item.ProductImages.FirstOrDefault(x => x.isDefault);
+                                            if (img != null)
+                                            {
+                                                strImge = img.Image;
+                                            }
+                                            <div class="product-item @item.ProductCategory.Alias">
+                                                <div class="product discount product_filter">
+                                                    <div class="product_image">
+                                                        <img src="@strImge" alt="@item.Title">
+                                                    </div>
+                                                    <div class="favorite favorite_left"></div>
+                                                    @if (item.PriceSale > 0)
+                                                    {
+                                                        <div class="product_bubble   d-flex flex-column align-items-center" style="background-color: #428BCA; margin-left: 170px; width: 45px; height: 45px; border-radius: 35px; margin-top: -9px;"><span style=" position: relative; top: 11px; text-transform: none; font-size: 18px;">Sale</span></div>
+                                                    }
+                                                    @* <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>*@
+                                                    <div class="product_info" style="position:absolute; bottom:0">
+                                                        <h6 class="product_name"><a href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a></h6>
+                                                        @if (item.PriceSale > 0)
+                                                        {
+                                                            <div style="color: #428BCA " class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0)<span>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</span></div>
+                                                            <div style="display: none;" class="in_product_price"> @item.PriceSale</div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div style="color: #428BCA " class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</div>
+                                                            <div style="display: none;" class="in_product_price"> @item.Price</div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div class="red_button add_to_cart_button"><a href="#" class="btnAddToCart" data-id="@item.Id" style="background-color: #428BCA">Thêm vào giỏ hàng</a></div>
+                                            </div>
+                                        }
+                                    }
+
+
+
+                                </div>
+                                <div style=" margin-left: 112px; margin-right: -86px; position: relative; top: -42px; text-align: center; ">
+                                    @Html.PagedListPager(Model, page => Url.Action("ProductCategory", new { page }))
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+    <script src="~/Content/assets/js/categories_custom2.js"></script>
+}

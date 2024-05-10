@@ -1,9 +1,12 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using WebBanHangOnline.Models;
+using WebBanHangOnline.Models.EF;
 
 namespace WebBanHangOnline.Controllers
 {
@@ -11,14 +14,56 @@ namespace WebBanHangOnline.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View();
+            var pageSize = 12;
+            if (page == null)
+            {
+                page = 1;
+            }
+            IEnumerable<Product> items = db.Products.OrderByDescending(x => x.Id);
+            
+            var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+            items = items.ToPagedList(pageIndex, pageSize);
+            ViewBag.PageSize = pageSize;
+            ViewBag.Page = page;
+            return View(items);
         }
+
+        public ActionResult ProductCategory(string alias, int id, int? page)
+        {
+            var pageSize = 12;
+            if (page == null)
+            {
+                page = 1;
+            }
+
+            var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+
+            IEnumerable<Product> items = db.Products;
+
+            if (id > 0)
+            {
+                items = items.Where(x => x.ProductCategoryId == id);
+            }
+            var cate = db.ProductCategories.Find(id);
+            if (cate != null)
+            {
+                ViewBag.CateName = cate.Title;
+            }
+
+            items = items.OrderByDescending(x => x.Id).ToPagedList(pageIndex, pageSize);
+
+            ViewBag.PageSize = pageSize;
+            ViewBag.Page = page;
+
+            return View(items);
+        }
+
 
         public ActionResult Partial_ItemByCateId()
         {
-            var items = db.Products.Where(x => x.IsActive).Take(12).ToList();
+            var items = db.Products.Where(x => x.IsActive).Take(10).ToList();
             return PartialView(items);
         }
     }

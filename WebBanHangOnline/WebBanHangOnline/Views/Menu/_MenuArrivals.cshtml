@@ -4,8 +4,8 @@
 {
     <div class="row">
         <div class="col text-center">
-            <div class="section_title new_arrivals_title">
-                <h2>SẢN PHẨM MỚI</h2>
+            <div class="section_title new_arrivals_title" style="font-family: 'FontAwesome' ">
+                <h2>MỘT SỐ MẪU SẢN PHẨM THAM KHẢO</h2>
             </div>
         </div>
     </div>
@@ -16,12 +16,15 @@
                     <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">TẤT CẢ</li>
                     @foreach (var item in Model)
                     {
-                        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".@item.Alias">@item.Title</li>
+                        if (@item.Alias == "vot-cau-long" || @item.Alias == "quan-cau-long" || @item.Alias == "ao-cau-long" || @item.Alias == "giay-cau-long" || @item.Alias == "tui-cau-long" || @item.Alias == "phu-kien-cau-long")
+                        {
+                            <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".@item.Alias">@item.Title</li>
+                        }
                     }
 
                     @*<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">women's</li>
-                    <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">accessories</li>
-                    <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">men's</li>*@
+        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">accessories</li>
+        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">men's</li>*@
                 </ul>
             </div>
         </div>
