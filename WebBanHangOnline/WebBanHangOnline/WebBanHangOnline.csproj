@@ -195,6 +195,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -344,6 +345,7 @@
     <Content Include="Content\assets\js\Custom2.js" />
     <Content Include="Content\assets\js\jquery-3.2.1.min.js" />
     <Content Include="Content\assets\js\single_custom.js" />
+    <Content Include="Content\assets\js\single_custom_remake.js" />
     <Content Include="Content\assets\plugins\easing\easing.js" />
     <Content Include="Content\assets\plugins\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="Content\assets\plugins\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -3342,6 +3344,7 @@
     <Content Include="Content\assets\dist\js\.eslintrc.json" />
     <Content Include="Content\assets\dist\js\adminlte.js.map" />
     <Content Include="Content\assets\dist\js\adminlte.min.js.map" />
+    <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3400,6 +3403,10 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Menu\_MenuLeft.cshtml" />
     <Content Include="Views\Products\ProductCategory.cshtml" />
+    <Content Include="Views\News\Partial_News_Home.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\Detail.cshtml" />
+    <Content Include="Views\Products\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -54,10 +54,10 @@
                     <label>Quyền</label>
                     @Html.DropDownListFor(x => x.Role, ViewBag.Role as SelectList, "- Chọn quyền -", new { @class = "form-control" })
                 </div>
-                      <div class="form-group">
-                          <label for="CreatedDate">Ngày tạo</label>
-                          <input type="text" id="CreatedDate" name="CreatedDate" class="form-control" readonly>
-                      </div>
+                <div class="form-group">
+                    <label for="CreatedDate">Ngày tạo</label>
+                    <input type="text" id="CreatedDate" name="CreatedDate" class="form-control" readonly>
+                </div>
                 <div class="form-group">
                     <label>Mật khẩu</label>
                     @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
@@ -84,12 +84,11 @@
 
 </section>
 <!-- /.content -->
-
 @*<script>
-    document.getElementById("btnNew").addEventListener("click", function() {
-        window.location.href = "/admin/account";
-    });
-</script>*@
+        document.getElementById("btnNew").addEventListener("click", function() {
+            window.location.href = "/admin/account";
+        });
+    </script>*@
 <script>
     // Lấy ngày hiện tại
     var currentDate = new Date();

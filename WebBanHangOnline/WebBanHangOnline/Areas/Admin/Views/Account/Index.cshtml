@@ -25,8 +25,25 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Danh sách tài khoản</h3>
+
+            <div class="row">
+                <div class="col-6"><h3 class="card-title">Danh sách tài khoản</h3></div>
+                <div class="col-6">
+                    @using (Html.BeginForm("Index", "Account", FormMethod.Get, new { }))
+                    {
+                        <div class="input-group input-group-sm" style="position: absolute; right: -100px; top: -6px;">
+                            @Html.TextBox("Searchtext", ViewBag.Searchtext as string, new { style = "width: 474px; border-radius: 4px 0 0 4px; background-color: aliceblue;", placeholder = "Email..." })
+                            <span class="input-group-append">
+                                <button type="submit" class="btn btn-info btn-flat" style="background-color: aliceblue; color: black; border-right: 2px solid; border-top: 2px solid; border-bottom: 2px solid; border-radius: 0 6px 6px 0;"><i class="fas fa-search"></i></button>
+
+                            </span>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
+
+
         <div class="card-body">
             <table class="table table-bordered">
                 <thead>
@@ -48,45 +65,45 @@
                 <tbody>
 
                     @*@if (Model != null && Model.Any())
-        {
-            // Sắp xếp danh sách tài khoản theo thời gian tạo giảm dần
-            //var sortedModel = Model.OrderByDescending(item => item.CreatedDate);
+                        {
+                            // Sắp xếp danh sách tài khoản theo thời gian tạo giảm dần
+                            //var sortedModel = Model.OrderByDescending(item => item.CreatedDate);
 
 
-            var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                            var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
 
-            foreach (var item in Model)
-            {
-                <tr>
-                    <td>@i</td>
-                    <td>@item.Email</td>
-                    <td>@item.UserName</td>
-                    <td>@item.Fullname</td>
-                    <td>@item.Phone</td>
-                    <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                    <td>
-                        @{
-                            var userRoles = ViewBag.UserRoles[item.Id] as List<string>;
-                            if (userRoles == null || userRoles.Count == 0)
+                            foreach (var item in Model)
                             {
-                                <span>Customer</span>
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.UserName</td>
+                                    <td>@item.Fullname</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        @{
+                                            var userRoles = ViewBag.UserRoles[item.Id] as List<string>;
+                                            if (userRoles == null || userRoles.Count == 0)
+                                            {
+                                                <span>Customer</span>
+                                            }
+                                            else
+                                            {
+                                                foreach (var role in userRoles)
+                                                {
+                                                    <span>@role</span>
+                                                }
+                                            }
+                                        }
+                                    </td>
+                                    <td>
+                                        <a href="#" data-user="@item.UserName" class="btn btn-sm btn-danger btnDelete" style="width: 84px">Xóa</a>
+                                    </td>
+                                </tr>
+                                i++;
                             }
-                            else
-                            {
-                                foreach (var role in userRoles)
-                                {
-                                    <span>@role</span>
-                                }
-                            }
-                        }
-                    </td>
-                    <td>
-                        <a href="#" data-user="@item.UserName" class="btn btn-sm btn-danger btnDelete" style="width: 84px">Xóa</a>
-                    </td>
-                </tr>
-                i++;
-            }
-        }*@
+                        }*@
 
                     @if (Model != null && Model.Any())
                     {
@@ -97,7 +114,7 @@
 
                         foreach (var item in sortedModel)
                         {
-                            <tr>
+                            <tr id="trow_@item.Id">
                                 <td>@i</td>
                                 <td>@item.Email</td>
                                 <td>@item.UserName</td>
@@ -121,7 +138,8 @@
                                     }
                                 </td>
                                 <td>
-                                    <a href="#" data-user="@item.UserName" class="btn btn-sm btn-danger btnDelete" style="width: 84px">Xóa</a>
+                                    <a href="/admin/account/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
+                                    <a href="#" data-user="@item.UserName" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
                                 </td>
                             </tr>
                             i++;
@@ -145,3 +163,26 @@
 
 </section>
 <!-- /.content -->
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('.btnDelete').click(function () {
+                var user = $(this).data('user');
+                var id = $(this).data('id');
+                var conf = confirm('Bạn có muốn xóa tài khoản này không?');
+                if (conf == true) {
+                    $.ajax({
+                        url: '/admin/account/DeleteAccount',
+                        type: 'POST',
+                        data: { user: user, id: id },
+                        success: function (res) {
+                            if (res.Success) {
+                                $('#trow_' + id).remove();
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

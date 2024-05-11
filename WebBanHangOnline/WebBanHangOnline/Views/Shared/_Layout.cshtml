@@ -80,7 +80,7 @@
                                 <div class="input-group input-group-sm" style="position: relative;top: -55px;left: 359px;width: 261px;">
                                     @*@Html.TextBox("Searchtext", null, new { style = "width: 85%", placeholder = "Tiêu đề ..." })*@
                                     <div class="search-container" style="">
-                                        <input type="text" name="searchtext" class="form-control" placeholder="Tìm sản phẩm..." onclick="showOptions()" style="background-color: aliceblue; width: 202px">
+                                        <input type="text" name="searchtext" class="form-control" placeholder="Tìm sản phẩm..." onclick="showOptions()" onkeypress="handleKeyPress(event)" style="background-color: aliceblue; width: 202px">
                                         <div class="options" id="options" style="display: none; height: 64px; width: 242px; border-radius: 0 0 20px 20px;">
                                             <p style=" border-bottom: 1px solid; font-size: 8px; text-align: left; "><i class="fa fa-fire"></i>Sản phẩm hot:</p>
                                             <a href="/danh-muc-san-pham/vot-cau-long-lining-19" style="position: absolute; border: 1px solid; border-radius: 20px; font-size: 9px; top: 24px;">Vợt cầu lông lining</a>
@@ -88,7 +88,9 @@
                                         </div>
                                     </div>
                                     <span class="input-group-append">
-                                        <button type="submit" class="btn btn-info btn-flat" style="background-color: aliceblue; color:gray"><i class="fa fa-search"></i></button>
+                                        <button type="button" class="btn btn-info btn-flat" style="background-color: aliceblue; color: gray" onclick="window.location.href='/products'">
+                                            <i class="fa fa-search"></i>
+                                        </button>
                                     </span>
                                 </div>
 
@@ -285,6 +287,12 @@
                 options.style.display = "none";
             }
         });
+
+        function handleKeyPress(event) {
+            if (event.keyCode === 13) { // Kiểm tra nếu phím Enter được nhấn
+                window.location.href = '/products'; // Chuyển hướng đến /products
+            }
+        }
 
 
     </script>

@@ -57,19 +57,22 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 
         // GET: Admin/Account
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(string Searchtext, int? page)
         {
-            var pageSize = 10;
+            var pageSize = 20;
             if (page == null)
             {
                 page = 1;
             }
 
-            //// Lấy danh sách tất cả người dùng từ cơ sở dữ liệu và sắp xếp theo Id
-            //var users = db.Users.OrderBy(x => x.Id).ToList();
-
             // Lấy danh sách tất cả người dùng từ cơ sở dữ liệu và sắp xếp theo CreatedDate
             var users = db.Users.OrderByDescending(x => x.CreatedDate).ToList();
+
+            // Lọc danh sách người dùng nếu có chuỗi tìm kiếm
+            if (!string.IsNullOrEmpty(Searchtext))
+            {
+                users = users.Where(u => u.Email.Contains(Searchtext)).ToList();
+            }
 
             // Tạo một từ điển để lưu trữ UserId và danh sách vai trò của mỗi người dùng
             Dictionary<string, IList<string>> userRolesDict = new Dictionary<string, IList<string>>();
@@ -91,8 +94,10 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             var paginatedUsers = users.ToPagedList(pageIndex, pageSize);
             ViewBag.PageSize = pageSize;
             ViewBag.Page = page;
+            ViewBag.Searchtext = Searchtext; // Truyền giá trị Searchtext vào ViewBag để hiển thị lại trong view
             return View(paginatedUsers);
         }
+
 
         //// Lấy danh sách tất cả người dùng từ cơ sở dữ liệu
         //    var users = db.Users.ToList();
@@ -258,6 +263,95 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             ViewBag.Role = new SelectList(db.Roles.ToList(), "Name", "Name");
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        public ActionResult Edit(string id)
+        {
+            var item = UserManager.FindById(id);
+            var newUser = new EditAccountViewModel();
+            if (item != null)
+            {
+                var rolesForUser = UserManager.GetRoles(id);
+                string role = null;
+                if (rolesForUser != null && rolesForUser.Any()) // Kiểm tra xem có vai trò nào không
+                {
+                    role = rolesForUser.First(); // Lấy vai trò đầu tiên
+                }
+                newUser.FullName = item.Fullname;
+                newUser.Email = item.Email;
+                newUser.Phone = item.Phone;
+                newUser.UserName = item.UserName;
+                newUser.Role = role; // Gán vai trò
+            }
+            ViewBag.Role = new SelectList(db.Roles.ToList(), "Name", "Name");
+            return View(newUser);
+        }
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(EditAccountViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = UserManager.FindByName(model.UserName);
+                user.Fullname = model.FullName;
+                user.Phone = model.Phone;
+                user.Email = model.Email;
+                user.CreatedDate = DateTime.Now;
+                var result = await UserManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    // Xóa tất cả các vai trò cũ của người dùng
+                    var rolesForUser = await UserManager.GetRolesAsync(user.Id);
+                    if (rolesForUser != null && rolesForUser.Any())
+                    {
+                        foreach (var role in rolesForUser)
+                        {
+                            await UserManager.RemoveFromRoleAsync(user.Id, role);
+                        }
+                    }
+
+                    // Thêm vai trò mới cho người dùng
+                    if (!string.IsNullOrEmpty(model.Role))
+                    {
+                        await UserManager.AddToRoleAsync(user.Id, model.Role);
+                    }
+
+                    return RedirectToAction("Index", "Account");
+                }
+                AddErrors(result);
+            }
+            ViewBag.Role = new SelectList(db.Roles.ToList(), "Name", "Name");
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> DeleteAccount(string user, string id)
+        {
+            var code = new { Success = false };//mặc định không xóa thành công.
+            var item = UserManager.FindByName(user);
+            if (item != null)
+            {
+                var rolesForUser = UserManager.GetRoles(id);
+                if (rolesForUser != null)
+                {
+                    foreach (var role in rolesForUser)
+                    {
+                        //roles.Add(role);
+                        await UserManager.RemoveFromRoleAsync(id, role);
+                    }
+
+                }
+
+                var res = await UserManager.DeleteAsync(item);
+                code = new { Success = res.Succeeded };
+            }
+            return Json(code);
         }
 
         private IAuthenticationManager AuthenticationManager
