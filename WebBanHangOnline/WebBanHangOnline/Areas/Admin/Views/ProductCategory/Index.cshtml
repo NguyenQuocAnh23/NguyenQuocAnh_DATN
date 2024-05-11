@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebBanHangOnline.Models.EF.ProductCategory>
+﻿@model PagedList.PagedList<WebBanHangOnline.Models.EF.ProductCategory>
 @using PagedList.Mvc;
 @using PagedList;
 @{
@@ -48,7 +48,7 @@
             
         </div>
         <div class="card-body">
-            
+
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -68,7 +68,7 @@
                     @if (Model != null && Model.Any())
                     {
                         var sortedModel = Model.OrderByDescending(item => item.CreatedDate); // Sắp xếp danh sách theo ngày tạo giảm dần
-                        var i = 1;
+                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                         foreach (var item in sortedModel)
                         {
                             <tr id="trow_@item.Id">
@@ -94,9 +94,10 @@
                 </tbody>
 
             </table>
-            @*<div style="text-align:center">
+            <div style="text-align:center">
                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-            </div>*@
+            </div>
+            
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

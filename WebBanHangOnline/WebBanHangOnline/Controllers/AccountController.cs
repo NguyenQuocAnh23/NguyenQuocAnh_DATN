@@ -155,7 +155,8 @@ namespace WebBanHangOnline.Controllers
                     UserName = model.Email,
                     Email = model.Email,
                     Fullname = model.FullName,
-                    Phone = model.Phone
+                    Phone = model.Phone,
+                    CreatedDate = model.CreatedDate
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

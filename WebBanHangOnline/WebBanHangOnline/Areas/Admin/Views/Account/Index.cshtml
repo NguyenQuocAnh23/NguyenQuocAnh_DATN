@@ -1,4 +1,6 @@
-﻿@model IEnumerable<WebBanHangOnline.Models.ApplicationUser>
+﻿@model PagedList.PagedList<WebBanHangOnline.Models.ApplicationUser>
+@using PagedList.Mvc;
+@using PagedList;
 @{
     ViewBag.Title = "Quản lý tài khoản";
 }
@@ -34,6 +36,8 @@
                         <th>Tên tài khoản</th>
                         <th>Họ tên người dùng</th>
                         <th>SDT</th>
+                        <th>Ngày tạo</th>
+                        <th>Quyền</th>
                         <th style="width:110px">
                             <div class="card-tools">
                                 <a href="/admin/account/create" class="btn btn-success" style=" background-color: darkblue; font-size: 14px;">Thêm mới</a>
@@ -42,30 +46,54 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    @*@if (Model != null && Model.Any())
+        {
+            // Sắp xếp danh sách tài khoản theo thời gian tạo giảm dần
+            //var sortedModel = Model.OrderByDescending(item => item.CreatedDate);
+
+
+            var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@item.Email</td>
+                    <td>@item.UserName</td>
+                    <td>@item.Fullname</td>
+                    <td>@item.Phone</td>
+                    <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @{
+                            var userRoles = ViewBag.UserRoles[item.Id] as List<string>;
+                            if (userRoles == null || userRoles.Count == 0)
+                            {
+                                <span>Customer</span>
+                            }
+                            else
+                            {
+                                foreach (var role in userRoles)
+                                {
+                                    <span>@role</span>
+                                }
+                            }
+                        }
+                    </td>
+                    <td>
+                        <a href="#" data-user="@item.UserName" class="btn btn-sm btn-danger btnDelete" style="width: 84px">Xóa</a>
+                    </td>
+                </tr>
+                i++;
+            }
+        }*@
+
                     @if (Model != null && Model.Any())
                     {
-                        var i = 1;
+                        // Sắp xếp danh sách tài khoản theo thời gian tạo giảm dần
+                        var sortedModel = Model.OrderByDescending(item => item.CreatedDate);
 
-                        foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@i</td>
-                                <td>@item.Email</td>
-                                <td>@item.UserName</td>
-                                <td>@item.Fullname</td>
-                                <td>@item.Phone</td>
-                                <td>
-                                    <a href="#" data-user="@item.UserName" class="btn btn-sm btn-danger btnDelete" style="width: 84px">Xóa</a>
-                                </td>
-                            </tr>
-                            i++;
-                        }
-
-                    }
-                    @*@if (Model != null && Model.Any())
-                    {
-                        var sortedModel = Model.OrderByDescending(item => item.CreatedDate); // Sắp xếp danh sách theo thời gian tạo tài khoản giảm dần
-                        var i = 1;
+                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
 
                         foreach (var item in sortedModel)
                         {
@@ -75,16 +103,37 @@
                                 <td>@item.UserName</td>
                                 <td>@item.Fullname</td>
                                 <td>@item.Phone</td>
+                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    @{
+                                        var userRoles = ViewBag.UserRoles[item.Id] as List<string>;
+                                        if (userRoles == null || userRoles.Count == 0)
+                                        {
+                                            <span>Customer</span>
+                                        }
+                                        else
+                                        {
+                                            foreach (var role in userRoles)
+                                            {
+                                                <span>@role</span>
+                                            }
+                                        }
+                                    }
+                                </td>
                                 <td>
                                     <a href="#" data-user="@item.UserName" class="btn btn-sm btn-danger btnDelete" style="width: 84px">Xóa</a>
                                 </td>
                             </tr>
                             i++;
                         }
-                    }*@
+                    }
+
 
                 </tbody>
             </table>
+            <div style="text-align:center">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

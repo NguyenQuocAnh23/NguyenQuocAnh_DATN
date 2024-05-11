@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using WebBanHangOnline.Models;
 using WebBanHangOnline.Models.EF;
 
@@ -27,6 +28,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+
         }
 
         public ApplicationSignInManager SignInManager
@@ -54,21 +56,114 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
         }
 
         // GET: Admin/Account
+
         public ActionResult Index(int? page)
         {
-            IEnumerable<News> items = db.News.OrderByDescending(x => x.Id);
             var pageSize = 10;
             if (page == null)
             {
                 page = 1;
             }
+
+            //// Lấy danh sách tất cả người dùng từ cơ sở dữ liệu và sắp xếp theo Id
+            //var users = db.Users.OrderBy(x => x.Id).ToList();
+
+            // Lấy danh sách tất cả người dùng từ cơ sở dữ liệu và sắp xếp theo CreatedDate
+            var users = db.Users.OrderByDescending(x => x.CreatedDate).ToList();
+
+            // Tạo một từ điển để lưu trữ UserId và danh sách vai trò của mỗi người dùng
+            Dictionary<string, IList<string>> userRolesDict = new Dictionary<string, IList<string>>();
+
+            // Lặp qua từng người dùng để lấy danh sách vai trò của mỗi người dùng
+            foreach (var user in users)
+            {
+                // Lấy danh sách các vai trò của người dùng hiện tại
+                var roles = UserManager.GetRoles(user.Id);
+
+                // Thêm UserId và danh sách vai trò vào từ điển
+                userRolesDict.Add(user.Id, roles);
+            }
+
+            // Truyền danh sách vai trò của từng người dùng vào ViewBag
+            ViewBag.UserRoles = userRolesDict;
+
             var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
-            items = items.ToPagedList(pageIndex, pageSize);
+            var paginatedUsers = users.ToPagedList(pageIndex, pageSize);
             ViewBag.PageSize = pageSize;
             ViewBag.Page = page;
-            var atems = db.Users.ToList();
-            return View(atems);
+            return View(paginatedUsers);
         }
+
+        //// Lấy danh sách tất cả người dùng từ cơ sở dữ liệu
+        //    var users = db.Users.ToList();
+
+        //    // Tạo một từ điển (dictionary) để lưu trữ UserId và danh sách các vai trò của mỗi người dùng
+        //    Dictionary<string, IList<string>> userRolesDict = new Dictionary<string, IList<string>>();
+
+        //    // Lặp qua từng người dùng để lấy danh sách vai trò của mỗi người dùng
+        //    foreach (var user in users)
+        //    {
+        //        // Lấy danh sách các vai trò của user hiện tại
+        //        var roles = UserManager.GetRoles(user.Id);
+
+        //        // Thêm UserId và danh sách vai trò vào từ điển
+        //        userRolesDict.Add(user.Id, roles);
+        //    }
+
+        //    // Truyền danh sách vai trò của từng người dùng vào ViewBag
+        //    ViewBag.UserRoles = userRolesDict;
+
+        //    return View(users);
+
+
+        //public ActionResult Index(int? page)
+        //{
+        //    //IEnumerable<News> items = db.News.OrderByDescending(x => x.Id);
+        //    //var pageSize = 10;
+        //    //if (page == null)
+        //    //{
+        //    //    page = 1;
+        //    //}
+        //    //var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+        //    //items = items.ToPagedList(pageIndex, pageSize);
+        //    //ViewBag.PageSize = pageSize;
+        //    //ViewBag.Page = page;
+        //    //var atems = db.Users.ToList();
+        //    //return View(atems);
+
+        //    IEnumerable<News> items = db.News.OrderByDescending(x => x.Id);
+        //    var pageSize = 10;
+        //    if (page == null)
+        //    {
+        //        page = 1;
+        //    }
+        //    var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+        //    items = items.ToPagedList(pageIndex, pageSize);
+        //    ViewBag.PageSize = pageSize;
+        //    ViewBag.Page = page;
+
+        //    // Lấy danh sách tất cả users từ database
+        //    var users = db.Users.ToList();
+
+        //    // Tạo một dictionary để lưu UserId và danh sách roles của mỗi user
+        //    Dictionary<string, IList<string>> userRolesDict = new Dictionary<string, IList<string>>();
+
+        //    // Lặp qua từng user để lấy danh sách roles của mỗi user
+        //    foreach (var user in users)
+        //    {
+        //        // Lấy danh sách các roles của user hiện tại
+        //        var roles = UserManager.GetRoles(user.Id);
+
+        //        // Thêm UserId và danh sách roles vào dictionary
+        //        userRolesDict.Add(user.Id, roles);
+        //    }
+
+        //    // Truyền danh sách roles của từng user vào ViewBag
+        //    ViewBag.UserRoles = userRolesDict;
+
+        //    return View(users);
+
+        //}
 
         //
         // GET: /Account/Login
@@ -141,7 +236,8 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                     UserName = model.UserName,
                     Email = model.Email,
                     Fullname = model.FullName,
-                    Phone = model.Phone
+                    Phone = model.Phone,
+                    CreatedDate= DateTime.Now,
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

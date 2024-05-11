@@ -247,6 +247,10 @@
     <Compile Include="Migrations\202404120347110_Update1204_1.designer.cs">
       <DependentUpon>202404120347110_Update1204_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202405110959470_UpdateCreatedDate.cs" />
+    <Compile Include="Migrations\202405110959470_UpdateCreatedDate.designer.cs">
+      <DependentUpon>202405110959470_UpdateCreatedDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -3452,6 +3456,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404120347110_Update1204_1.resx">
       <DependentUpon>202404120347110_Update1204_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405110959470_UpdateCreatedDate.resx">
+      <DependentUpon>202405110959470_UpdateCreatedDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

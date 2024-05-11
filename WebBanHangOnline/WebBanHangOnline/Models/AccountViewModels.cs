@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebBanHangOnline.Models
@@ -71,6 +72,7 @@ namespace WebBanHangOnline.Models
 
         public string Phone { get; set; }
         public string Role { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         [Required]
         [EmailAddress]
@@ -99,6 +101,7 @@ namespace WebBanHangOnline.Models
         [Required]
         public string FullName { get; set; }
         public string Phone { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

@@ -13,7 +13,10 @@
             <a href="/admin" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin" class="nav-link">@ViewBag.Title</a>
+            <a href="/admin/account" class="nav-link">Danh sách tài khoản</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/account/create" class="nav-link">@ViewBag.Title</a>
         </li>
     </ul>
 }
@@ -51,6 +54,10 @@
                     <label>Quyền</label>
                     @Html.DropDownListFor(x => x.Role, ViewBag.Role as SelectList, "- Chọn quyền -", new { @class = "form-control" })
                 </div>
+                      <div class="form-group">
+                          <label for="CreatedDate">Ngày tạo</label>
+                          <input type="text" id="CreatedDate" name="CreatedDate" class="form-control" readonly>
+                      </div>
                 <div class="form-group">
                     <label>Mật khẩu</label>
                     @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
@@ -60,7 +67,10 @@
                     @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control" })
                 </div>
                 <div class="form-group">
-                    <button @*id="btnNew"*@ type="submit" class="btn btn-success">Thêm mới</button>
+                    <span style=" position: relative; left: 1036px;">
+                        <button @*id="btnNew"*@ type="submit" class="btn btn-success">Thêm mới</button>
+                        <a href="/admin/account" class="btn btn-danger">Quay lại</a>
+                    </span>
                 </div>
             }
         </div>
@@ -80,3 +90,13 @@
         window.location.href = "/admin/account";
     });
 </script>*@
+<script>
+    // Lấy ngày hiện tại
+    var currentDate = new Date();
+
+    // Format ngày hiện tại thành chuỗi yyyy-MM-dd
+    var formattedDate = currentDate.toISOString().split('T')[0];
+
+    // Đặt giá trị mặc định cho trường ngày tạo
+    document.getElementById("CreatedDate").value = formattedDate;
+</script>

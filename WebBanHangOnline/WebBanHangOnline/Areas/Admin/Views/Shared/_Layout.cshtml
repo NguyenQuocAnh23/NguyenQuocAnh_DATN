@@ -159,14 +159,13 @@
         </nav>
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4" style="border-radius: 29px 29px 0 0; background-color: darkblue" >
+        <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: darkblue">
             <!-- Brand Logo -->
-            <a href="/home" class="brand-link" style=" background-color: ghostwhite; color: black; border-radius: 49px; ">
+            @Html.Partial("_PartialSideBar")
+            <a href="/home" class="brand-link" style=" color: cornsilk; ">
                 <img src="~/Content/assets/images/Banner_Logo.jpg" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Badminton Shop</span>
             </a>
-
-            @Html.Partial("_PartialSideBar")
         </aside>
 
         <!-- Content Wrapper. Contains page content -->

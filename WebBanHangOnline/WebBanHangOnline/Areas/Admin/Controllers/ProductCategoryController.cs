@@ -1,8 +1,10 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using WebBanHangOnline.Models;
 using WebBanHangOnline.Models.EF;
 
@@ -12,10 +14,20 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Admin/ProductCategory
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var items = db.ProductCategories;
-            return View(items);
+            var pageSize = 10;
+            if (page == null)
+            {
+                page = 1;
+            }
+            var items = db.ProductCategories.OrderByDescending(x => x.Id);
+            var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+            var paginatedItems = items.ToPagedList(pageIndex, pageSize);
+            ViewBag.PageSize = pageSize;
+            ViewBag.Page = page;
+            return View(paginatedItems);
+
         }
         public ActionResult Add()
         {
