@@ -8,7 +8,7 @@ using System.Web;
 namespace WebBanHangOnline.Models.EF
 {
     [Table("tb_Order")]
-    public class Order
+    public class Order : CommonAbstract
     {
         public Order()
         {
@@ -18,15 +18,16 @@ namespace WebBanHangOnline.Models.EF
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        public string code { get; set; }
-        [Required]
+        public string Code { get; set; }
+        [Required(ErrorMessage = "Tên không được để trống")]
         public string CustomerName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "SDT không được để trống")]
         public string Phone { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Địa chỉ không được để trống")]
         public string Address { get; set; }
         public decimal TotalAmount { get; set; }
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
+        public int TypePayment { get; set; }
 
         public ICollection<OrderDetail> OrderDetails { get; set; }
     }

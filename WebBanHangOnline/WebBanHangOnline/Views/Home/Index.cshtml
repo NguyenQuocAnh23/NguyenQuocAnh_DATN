@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/main_styles.css">
 <style>
     .red_button1 {
         display: -webkit-inline-box;
@@ -67,14 +67,14 @@
 </div>
 
 <div class="container">
-    <div class="row" >
-        <div class="col-3 " >
+    <div class="row">
+        <div class="col-3 ">
             <div class="benefit_item d-flex flex-row align-items-center" style="margin-left: -204px; height: 60px; width: 400px">
                 <div class="icon">
                     <img width="40" height="40" class="lazyload loaded" src="https://cdn.shopvnb.com/themes/images/policy_image_2.svg" data-src="https://cdn.shopvnb.com/themes/images/policy_image_2.svg" alt="Vận chuyển toàn quốc" data-was-processed="true">
                 </div>
                 <div class="benefit_content">
-                    <div class="benefit_content" >
+                    <div class="benefit_content">
                         <h6 style="font-weight: 600 ">Vận chuyển toàn quốc</h6>
                         <p style="font-weight:100">Được kiểm tra hàng khi nhận</p>
                     </div>
@@ -153,15 +153,15 @@
                                     </li>
                                     <li class="d-inline-flex flex-column justify-content-center align-items-center">
                                         <div id="hour" class="timer_num" style="color: blue;">14</div>
-                                        <div class="timer_unit" >Giờ</div>
+                                        <div class="timer_unit">Giờ</div>
                                     </li>
                                     <li class="d-inline-flex flex-column justify-content-center align-items-center">
                                         <div id="minute" class="timer_num" style="color: blue;">40</div>
-                                        <div class="timer_unit" >Phút</div>
+                                        <div class="timer_unit">Phút</div>
                                     </li>
                                     <li class="d-inline-flex flex-column justify-content-center align-items-center">
                                         <div id="second" class="timer_num" style="color: blue;">13</div>
-                                        <div class="timer_unit" >Giây</div>
+                                        <div class="timer_unit">Giây</div>
                                     </li>
                                 </ul>
                                 <div class="red_button deal_ofthe_week_button"><a href="#">Mua ngay</a></div>
@@ -174,23 +174,25 @@
     </div>
 </div>
 
-<!-- Best Sellers -->
-
-<!-- Slider Navigation -->
-<!--<div class="product_slider_nav_left product_slider_nav d-flex align-items-center justify-content-center flex-column">
-                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                    </div>
-                    <div class="product_slider_nav_right product_slider_nav d-flex align-items-center justify-content-center flex-column">
-                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
-<!-- Benefit -->
-
-
 
 <!-- Blogs -->
 @Html.Action("Partial_News_Home", "News")
+<div style=" height: 1px;"><a style="cursor: pointer; font-size: 83px; color: darkblue; position: relative; left: 1400px; top: -34px;" class="scrollUp"><i class="fa fa-arrow-circle-up"></i></a></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lấy thẻ <a> có lớp scrollUp
+        var link = document.querySelector("a.scrollUp");
+
+        // Thêm sự kiện click cho thẻ <a>
+        link.addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn chặn hành động mặc định khi click vào thẻ <a>
+
+            // Cuộn trang web lên trên 100px từ đầu trang
+            window.scrollTo({
+                top: 0, // Cuộn lên đầu trang
+                behavior: "smooth" // Cuộn mượt
+            });
+        });
+    });
+</script>
