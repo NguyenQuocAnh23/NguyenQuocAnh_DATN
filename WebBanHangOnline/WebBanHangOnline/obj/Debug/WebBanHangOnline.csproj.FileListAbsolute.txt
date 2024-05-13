@@ -255,3 +255,5 @@ F:\DATN\DATN\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.pdb
 F:\DATN\DATN\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.UpdateCreatedDate.resources
 F:\DATN\DATN\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.UpdatePayment.resources
 F:\DATN\DATN\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.UpdatePayment1.resources
+F:\DATN\DATN\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.countView.resources
+F:\DATN\DATN\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.updateEmail.resources

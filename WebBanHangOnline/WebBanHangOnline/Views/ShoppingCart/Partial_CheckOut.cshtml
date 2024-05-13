@@ -37,7 +37,7 @@
     <div class="form-group">
         <label>Hình thức thanh toán</label>
         <select class="form-control" name="TypePayment" id="drTypePayment">
-            <option value="1" selected>COD</option>
+            <option value="1" selected>Thanh toán khi nhận hàng</option>
             <option value="2">Chuyển khoản</option>
         </select>
     </div>
@@ -51,7 +51,22 @@
             <label><input type="radio" name="TypePaymentVN" value="3" /> Thanh toán qua thẻ quốc tế </label><br />
         </div>*@
     <div class="form-group" id="load_send"></div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-block btn-success" id="btnCheckOut">Đặt hàng</button>
+
+    <div class="row">
+        <div class="col-9">
+            <div class="form-group">
+                <button type="submit" class="btn btn-block btn-success" id="btnCheckOut">Đặt hàng</button>
+
+            </div>
+        </div>
+        <div class="col-3">
+            <div style="height: 37.6px; width: 100%; border: 1px solid; border-radius: 4px; background-color: darkblue;">
+                <a href="/gio-hang" style="color: white; position: relative; top: 7px; left: 14px; font-size: 18px;">Quay lại giỏ hàng</a>
+            </div>
+        </div>
     </div>
+
+    
+
+    
 }

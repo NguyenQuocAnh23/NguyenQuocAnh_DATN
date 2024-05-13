@@ -261,6 +261,14 @@
     <Compile Include="Migrations\202405130024374_UpdatePayment1.designer.cs">
       <DependentUpon>202405130024374_UpdatePayment1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202405130829228_countView.cs" />
+    <Compile Include="Migrations\202405130829228_countView.designer.cs">
+      <DependentUpon>202405130829228_countView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202405131113361_updateEmail.cs" />
+    <Compile Include="Migrations\202405131113361_updateEmail.designer.cs">
+      <DependentUpon>202405131113361_updateEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -3181,6 +3189,8 @@
     <Content Include="Content\clients\plugins\uplot\uPlot.iife.min.js" />
     <Content Include="Content\clients\plugins\uplot\uPlot.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\templates\EmAd.html" />
+    <Content Include="Content\templates\EmailCustomer.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -3496,6 +3506,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202405130024374_UpdatePayment1.resx">
       <DependentUpon>202405130024374_UpdatePayment1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405130829228_countView.resx">
+      <DependentUpon>202405130829228_countView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405131113361_updateEmail.resx">
+      <DependentUpon>202405131113361_updateEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

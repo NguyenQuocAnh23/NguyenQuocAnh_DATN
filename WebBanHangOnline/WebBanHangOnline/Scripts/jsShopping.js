@@ -26,9 +26,16 @@
         e.preventDefault();
         var id = $(this).data("id");
         var quantity = $('#Quantity_' + id).val();
-        Update(id, quantity);
 
+        // Kiểm tra nếu số lượng nhập vào là số âm, thì sẽ cập nhật thành 1
+        if (parseInt(quantity) <= 0) {
+            quantity = 1;
+            $('#Quantity_' + id).val(quantity); // Cập nhật giá trị hiển thị trên input thành 1
+        }
+
+        Update(id, quantity);
     });
+
     $('body').on('click', '.btnDeleteAll', function (e) {
         e.preventDefault();
         var conf = confirm('Đồng ý xóa hết?');
