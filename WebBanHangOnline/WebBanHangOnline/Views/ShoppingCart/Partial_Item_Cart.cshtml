@@ -7,10 +7,13 @@
         <th>Tên sản phẩm</th>
         <th>Danh mục</th>
         <th>Giá</th>
-
+        <th>Size Giày</th>
+        <th>Size áo</th>
+        <th>Size quần</th>
+        <th>Size váy</th>
         <th style="width:100px;">Số lượng</th>
         <th>Thành tiền</th>
-        <th style="width:200px;">
+        <th style="width: 104.2px; ">
 
         </th>
     </tr>
@@ -31,17 +34,55 @@
                 </td>
                 <td>@item.CategoryName</td>
                 <td>@Common.FormatNumber(item.Price, 0)</td>
+                <td>
+                    <select style=" border: 1px;">
+                        <option>_</option>
+                        <option>36</option>
+                        <option>37</option>
+                        <option>38</option>
+                        <option>39</option>
+                        <option>40</option>
+                    </select>
+                </td>
+                <td>
+                    <select style=" border: 1px;">
+                        <option>_</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                        <option>2XL</option>
+                        <option>3Xl</option>
+                    </select>
+                </td>
+                <td>
+                    <select style="border: 1px; ">
+                        <option>_</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                </td>
+                <td>
+                    <select style=" border: 1px;">
+                        <option>_</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                </td>
                 <td><input type="number" class="form-control" id="Quantity_@item.ProductId" value="@item.Quantity" /></td>
                 <th>@Common.FormatNumber(item.TotalPrice, 2)</th>
                 <td>
-                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-danger btnDelete">Xóa</a>
-                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-success btnUpdate">Cập nhật</a>
+                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-danger btnDelete" style=" width: 80px; position: relative; top: -6px; ">Xóa</a>
+                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btnUpdate" style="background-color:darkblue; color:white">Cập nhật</a>
                 </td>
             </tr>
             i++;
         }
         <tr>
-            <th colspan="6" class="text-right">Tổng: </th>
+            <th colspan="10" class="text-right">Tổng: </th>
             <th class="text-center">@Common.FormatNumber(tongtien, 0)</th>
             <th></th>
         </tr>
@@ -50,7 +91,9 @@
     else
     {
         <tr>
-            <th colspan="7">Không có sản phẩm trong giỏ hàng!!</th>
+            <th><i style=" font-size: 65px; position: relative; top: 9px; left: 337px; " class="fa fa-cart-arrow-down"></i></th>
+
+            <th style=" position: relative; top: 29px; left: 349px;" colspan="7">Chưa có sản phẩm nào trong giỏ.<a href="/san-pham" style="color:blue"> Mua ngay</a></th>
         </tr>
     }
 </table>

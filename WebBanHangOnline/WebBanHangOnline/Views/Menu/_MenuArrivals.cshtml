@@ -2,6 +2,7 @@
 
 @if (Model != null && Model.Any())
 {
+    <div style=" height: 1px;"> <a style="position: relative; left: 1188px; top: 629px; color: gray; font-size: 75px; text-align: center; color: #428BCA; " href="/gio-hang"><i style="" class="fa fa-shopping-cart"></i></a></div>
     <div class="row">
         <div class="col text-center">
             <div class="section_title new_arrivals_title" style="font-family: 'FontAwesome' ">
@@ -23,8 +24,8 @@
                     }
 
                     @*<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">women's</li>
-        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">accessories</li>
-        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">men's</li>*@
+                        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">accessories</li>
+                        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">men's</li>*@
                 </ul>
             </div>
         </div>
@@ -32,9 +33,10 @@
     <div class="row">
         <div class="col">
             <div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
-                @Html.Action("Partial_ItemByCateId", "Products")        
+                @Html.Action("Partial_ItemByCateId", "Products")
             </div>
         </div>
     </div>
+
 }
 
