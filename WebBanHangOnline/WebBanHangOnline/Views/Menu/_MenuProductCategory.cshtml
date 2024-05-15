@@ -13,40 +13,113 @@
             <div class="row">
                 @foreach (var item in Model)
                 {
-                    if (@item.Alias == "vot-cau-long" || @item.Alias == "quan-cau-long" || @item.Alias == "ao-cau-long" || @item.Alias == "giay-cau-long" || @item.Alias == "tui-cau-long" || @item.Alias == "phu-kien-cau-long")
+                    @*if (@item.Alias == "vot-cau-long" || @item.Alias == "quan-cau-long" || @item.Alias == "ao-cau-long" || @item.Alias == "giay-cau-long" || @item.Alias == "tui-cau-long" || @item.Alias == "phu-kien-cau-long")
+            {
+                var url = "/danh-muc-san-pham/" + @item.Alias + "-" + @item.Id;
+                <div class="col-md-4">
+                    <div class="banner_item align-items-center" style="background-image: url('@item.Icon')">
+                        <div class="banner_category">
+                            <a href="@url">@item.Title</a>
+                        </div>
+                    </div>
+                </div>
+            }*@
+                    if (@item.Alias == "vot-cau-long")
                     {
-                        var url = "/danh-muc-san-pham/" + @item.Alias + "-" + @item.Id;
+
                         <div class="col-md-4">
                             <div class="banner_item align-items-center" style="background-image: url('@item.Icon')">
                                 <div class="banner_category">
-                                    <a href="@url">@item.Title</a>
+                                    <a href="/danh-muc-san-pham/vot-cau-long-yonex-18">@item.Title</a>
                                 </div>
                             </div>
                         </div>
                     }
-                    @*<div class="col-md-4">
-                        <div class="banner_item align-items-center" style="background-image: url(@item.Icon)">
-                            <div class="banner_category">
-                                <a href="/danh-muc-san-pham/@item.Alias-@(item.Id)">@item.Title</a>
+                    if (@item.Alias == "quan-cau-long")
+                    {
+
+                        <div class="col-md-4">
+                            <div class="banner_item align-items-center" style="background-image: url('@item.Icon')">
+                                <div class="banner_category">
+                                    <a href="/danh-muc-san-pham/quan-cau-long-yonex-16">@item.Title</a>
+                                </div>
                             </div>
                         </div>
-                    </div>*@
+                    }
+                    if (@item.Alias == "ao-cau-long")
+                    {
+
+                        <div class="col-md-4">
+                            <div class="banner_item align-items-center" style="background-image: url('@item.Icon')">
+                                <div class="banner_category">
+                                    <a href="/danh-muc-san-pham/ao-cau-long-yonex-14">@item.Title</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (@item.Alias == "giay-cau-long")
+                    {
+
+                        <div class="col-md-4">
+                            <div class="banner_item align-items-center" style="background-image: url('@item.Icon')">
+                                <div class="banner_category">
+                                    <a href="/danh-muc-san-pham/giay-cau-long-yonex-20">@item.Title</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (@item.Alias == "tui-cau-long")
+                    {
+
+                        <div class="col-md-4">
+                            <div class="banner_item align-items-center" style="background-image: url('@item.Icon')">
+                                <div class="banner_category">
+                                    <a href="/danh-muc-san-pham/tui-cau-long-yonex-24">@item.Title</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (@item.Alias == "phu-kien-cau-long")
+                    {
+
+                        <div class="col-md-4">
+                            <div class="banner_item align-items-center" style="background-image: url('@item.Icon')">
+                                <div class="banner_category">
+                                    <a href="/danh-muc-san-pham/cuon-can-cau-long-26">@item.Title</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @*
+            
+                        
+                        
+                        
+                        
+                    *@
+                    @*<div class="col-md-4">
+                <div class="banner_item align-items-center" style="background-image: url(@item.Icon)">
+                    <div class="banner_category">
+                        <a href="/danh-muc-san-pham/@item.Alias-@(item.Id)">@item.Title</a>
+                    </div>
+                </div>
+            </div>*@
                 }
 
                 @*<div class="col-md-4">
-                    <div class="banner_item align-items-center" style="background-image:url(images/banner_2.jpg)">
-                        <div class="banner_category">
-                            <a href="categories.html">accessories's</a>
-                        </div>
-                    </div>
+            <div class="banner_item align-items-center" style="background-image:url(images/banner_2.jpg)">
+                <div class="banner_category">
+                    <a href="categories.html">accessories's</a>
                 </div>
-                <div class="col-md-4">
-                    <div class="banner_item align-items-center" style="background-image:url(images/banner_3.jpg)">
-                        <div class="banner_category">
-                            <a href="categories.html">men's</a>
-                        </div>
-                    </div>
-                </div>*@
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="banner_item align-items-center" style="background-image:url(images/banner_3.jpg)">
+                <div class="banner_category">
+                    <a href="categories.html">men's</a>
+                </div>
+            </div>
+        </div>*@
             </div>
         </div>
         <hr style=" position: relative; top: -582px; width: 977px; left: 268px;" />

@@ -64,7 +64,7 @@
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Thông tin chung</a></li>
                                     @*<li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Hình ảnh</a></li>*@
-                                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">SEO</a></li>
+                                    @*<li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">SEO</a></li>*@
                                 </ul>
                             </div><!-- /.card-header -->
                             <div class="card-body">
@@ -76,13 +76,13 @@
                                             @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Alias</label>
+                                            <label for="exampleInputEmail1">Tóm tắt tên</label>
                                             @Html.TextBoxFor(x => x.Alias, new { @class = "form-control", @placeholder = "Alias ..." })
                                             @Html.ValidationMessageFor(x => x.Alias, null, new { @class = "text-danger" })
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">SKU</label>
-                                            @Html.TextBoxFor(x => x.ProductCode, new { @class = "form-control", @placeholder = "Mã sản phẩm ..." })
+                                            <label for="exampleInputEmail1">Mã kiểm soát tồn kho</label>
+                                            @Html.TextBoxFor(x => x.ProductCode, new { @class = "form-control", @placeholder = "SKU ..." })
                                             @Html.ValidationMessageFor(x => x.ProductCode, null, new { @class = "text-danger" })
                                         </div>
                                         <div class="form-group">
@@ -101,22 +101,30 @@
                                             @Html.ValidationMessageFor(x => x.Detail, null, new { @class = "text-danger" })
                                         </div>
                                         <div class="row">
-                                            <div class="col-4">
+                                            <div class="col-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Số lượng</label>
                                                     @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control", @Value = "1" })
                                                     @Html.ValidationMessageFor(x => x.Quantity, null, new { @class = "text-danger" })
                                                 </div>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-3">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">Giá</label>
+                                                    <label for="exampleInputEmail1">Giá nhập</label>
+                                                    <input type="text" name="demoOriginalPrice" id="demoOriginalPrice" value="@Model.OriginalPrice" class="form-control auto">
+                                                    @Html.HiddenFor(x => x.OriginalPrice, new { @class = "form-control", @placeholder = "Giá nhập" })
+                                                    @Html.ValidationMessageFor(x => x.OriginalPrice, null, new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Giá bán</label>
                                                     <input type="text" name="demoPrice" value="@Model.Price" id="demoPrice" class="form-control auto" data-a-dec="," data-a-sep=".">
                                                     @Html.HiddenFor(x => x.Price, new { @class = "", @placeholder = "" })
                                                     @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-danger" })
                                                 </div>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Giá khuyến mãi</label>
                                                     <input type="text" name="demoPriceSale" value="@Model.PriceSale" id="demoPriceSale" class="form-control auto">
@@ -127,42 +135,45 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-3">
-                                                <div class="form-group">
-                                                    <div class="custom-control custom-checkbox">
-                                                        @Html.CheckBoxFor(x => x.IsActive, new { @class = "custom-control-input", @id = "customCheckbox2", @checked = "checked" })
-                                                        <label for="customCheckbox2" class="custom-control-label">Hiển thị</label>
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                             <div class="col-3">
-                                                <div class="form-group">
+                                                @*<div class="form-group">
                                                     <div class="custom-control custom-checkbox">
                                                         @Html.CheckBoxFor(x => x.isHot, new { @class = "custom-control-input", @id = "isHotCheckbox2" })
                                                         <label for="isHotCheckbox2" class="custom-control-label">Hot</label>
                                                     </div>
-                                                </div>
+                                                </div>*@
                                             </div>
                                             <div class="col-3">
-                                                <div class="form-group">
+                                                @*<div class="form-group">
                                                     <div class="custom-control custom-checkbox">
                                                         @Html.CheckBoxFor(x => x.isFeature, new { @class = "custom-control-input", @id = "isFeatureCheckbox2" })
                                                         <label for="isFeatureCheckbox2" class="custom-control-label">Nổi bật</label>
                                                     </div>
-                                                </div>
+                                                </div>*@
                                             </div>
                                             <div class="col-3">
-                                                <div class="form-group">
+                                                @*<div class="form-group">
                                                     <div class="custom-control custom-checkbox">
                                                         @Html.CheckBoxFor(x => x.isSale, new { @class = "custom-control-input", @id = "isSaleCheckbox2" })
                                                         <label for="isSaleCheckbox2" class="custom-control-label">Khuyến mãi</label>
                                                     </div>
+                                                </div>*@
+
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        @Html.CheckBoxFor(x => x.IsActive, new { @class = "custom-control-input", @id = "customCheckbox2", @checked = "checked" })
+                                                        <label for="customCheckbox2" class="custom-control-label">Hiển thị tham khảo</label>
+                                                    </div>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     <!-- /.tab-pane -->
 
-                                    <div class="tab-pane" id="settings">
+                                    @*<div class="tab-pane" id="settings">
                                         <form class="form-horizontal">
                                             <div class="form-group row">
                                                 <label for="inputName" class="col-sm-2 col-form-label">SEO Title</label>
@@ -186,7 +197,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>
+                                    </div>*@
                                     <!-- /.tab-pane -->
                                 </div>
                                 <!-- /.tab-content -->
@@ -226,6 +237,11 @@
                 var demoGet = $('#demoPriceSale').autoNumeric('get');
                 $('#PriceSale').val(demoGet);
                 $('#PriceSale').autoNumeric('set', demoGet);
+            });
+            $('#demoOriginalPrice').bind('blur focusout keypress keyup', function () {
+                var demoGet = $('#demoOriginalPrice').autoNumeric('get');
+                $('#OriginalPrice').val(demoGet);
+                $('#OriginalPrice').autoNumeric('set', demoGet);
             });
             CKEDITOR.replace('txtDetail', {
                 customConfig: '/content/ckeditor/config.js',

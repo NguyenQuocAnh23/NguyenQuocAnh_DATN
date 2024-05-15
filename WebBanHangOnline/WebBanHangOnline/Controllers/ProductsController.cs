@@ -14,21 +14,31 @@ namespace WebBanHangOnline.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Products
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string SearchText)
         {
             var pageSize = 12;
             if (page == null)
             {
                 page = 1;
             }
+
             IEnumerable<Product> items = db.Products.OrderByDescending(x => x.Id);
-            
+
+            if (!string.IsNullOrEmpty(SearchText))
+            {
+                items = items.Where(p => p.Title.Contains(SearchText));
+            }
+
             var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
             items = items.ToPagedList(pageIndex, pageSize);
+
             ViewBag.PageSize = pageSize;
             ViewBag.Page = page;
+            ViewBag.SearchText = SearchText;
+
             return View(items);
         }
+
 
         public ActionResult Detail(string alias, int id)
         {

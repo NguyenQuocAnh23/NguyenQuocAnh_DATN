@@ -28,8 +28,18 @@
                 <div class="sidebar_section" style="position: relative; left: -119px; top: -26px; width: 433px; height: 1017px; border-right: 1px solid; margin-top: 39px; ">
                     <div class="sidebar_title" style="font-size: 23px; background-color: black; height: 40px; width: 445px; border-radius: 10px 0px 50px 10px; position: relative; left: -13px;">
                         <span style=" position: relative; top: 9px; left: 8px; color: ghostwhite; font-size: 22px;">DANH MỤC SẢN PHẨM</span>
+                        @using (Html.BeginForm("Index", "products", FormMethod.Post, new { }))
+                        {
+                            <div class="input-group input-group-sm" style=" position: absolute; right: -249px; top: 0px;">
+                                <span class="input-group-append">
+                                    <button type="submit" class="btn btn-info btn-flat" style="background-color: aliceblue; color: black; border-left: 2px solid; border-top: 2px solid; border-bottom: 2px solid"><i class="fa fa-search"></i></button>
+
+                                </span>
+                                @Html.TextBox("SearchText", ViewBag.SearchText as string, new { style = "width: 155px; border-radius: 4px 0 42px 4px; background-color: aliceblue; font-size: 18px;", placeholder = "Tên sản phẩm..." })
+                            </div>
+                        }
                     </div>
-                    @Html.Action("MenuLeft", "Menu", new {id = ViewBag.CateId})
+                    @Html.Action("MenuLeft", "Menu")
                     <div style=" width: 433px; height: 577px; background-image: url(/Content/assets//images/UnderPic.png);"></div>
                 </div>
 
@@ -50,9 +60,10 @@
 
                             <div class="product_sorting_container product_sorting_container_top" style=" position: relative; top: -26px; left: -12px; ">
                                 <div style="position: relative; background-color: black; left: -21px; border-radius: 50px 10px 10px 0px">
-                                    <span style="color: ghostwhite; position: relative; top: 5px; left: 17px; font-weight: 500; font-size: 21px; font-family: sans-serif;">SẢN PHẨM CẦU LÔNG</span>
+
+
                                     <ul class="product_sorting">
-                                        <li style="position: relative; left: 472px; background-color: black; border: black; width: 174px; border-radius: 34px; text-align: right; ">
+                                        <li style="position: relative; background-color: black; border: black; width: 174px; border-radius: 46px 0 0 0; text-align: right;">
                                             <span class="type_sorting_text" style=" color: white; position: relative; left: -3px; ">Sắp xếp mặc định</span>
                                             <i class="fa fa-angle-down" style="position: relative;left: 2px;color: white;"></i>
                                             <ul class="sorting_type">
@@ -63,6 +74,8 @@
                                         </li>
 
                                     </ul>
+                                    @*<span style="color: ghostwhite; position: relative; top: 5px; left: 17px; font-weight: 500; font-size: 21px; font-family: sans-serif;">SẢN PHẨM CẦU LÔNG</span>*@
+                                    <span style="color: ghostwhite; position: relative; left: -18px; font-weight: 500; font-size: 15px; font-family: sans-serif; ">@ViewBag.CateName</span>
                                 </div>
 
 

@@ -26,39 +26,60 @@
         max-width: 100%;
         max-height: 100%;
     }
+    .row-item-new {
+        margin-bottom: 20px; /* Khoảng cách giữa các tin tức */
+        border: 1px solid #ccc; /* Viền cho mỗi tin tức */
+        padding: 10px; /* Khoảng cách bên trong của mỗi tin tức */
+    }
+
+    .img-box {
+        margin-bottom: 10px; /* Khoảng cách giữa hình ảnh và nội dung */
+    }
+
+    .description-box {
+        overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
+        text-overflow: ellipsis; /* Nếu nội dung quá dài, hiển thị dấu ba chấm (...) */
+        white-space: nowrap; /* Đảm bảo nội dung không xuống dòng */
+    }
+
     
 </style>
-<div style="background-color: lightcyan; position: relative; top: -100px; margin-top: -31px;"> 
+<div style="background-color: lightcyan; position: relative; top: -100px; margin-top: -31px; margin-bottom: -176px; height: 511px "> 
     <div class="container news_section_container" style="position: relative; left: -49px; width: 1150px; margin-bottom: -179px; ">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <h1 class="title-news" style=" font-family: fangsong;"> Tin tức</h1>
+                
+            </div>
+            <div class="col-md-6">
+                <div style="border-bottom: 1px solid; margin-left: -30px; height: 60px ">
+                    <span class="text-right">@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))</span>
+                </div>
             </div>
         </div>
         @if (Model != null && Model.Any())
         {
-            foreach (var item in Model)
-            {
-                <div class="row row-item-new">
-                    <div class="col-md-3">
-                        <div class="img-box">
-                            <a href="/@item.Alias-n@(item.Id)" title="@item.Title"><img style="height:154px; width:255px" src="@item.Image" alt="@item.Title" /></a>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="content-box">
-                            <h3><a class="changeRed" style="font-family: fangsong; color: black;" href="/@item.Alias-n@(item.Id)" title="@item.Title" onmouseover="this.style.color='darkblue'" onmouseout="this.style.color='black'">@item.Title</a></h3>
-                            <div class="description-box">
-                                @item.Description
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="row-item-new">
+                            <div class="img-box">
+                                <a href="/@item.Alias-n@(item.Id)" title="@item.Title"><img style="height:200px; width:330px" src="@item.Image" alt="@item.Title" /></a>
+                            </div>
+                            <div class="content-box">
+                                <h3><a class="changeRed" style="font-family: fangsong; color: black;" href="/@item.Alias-n@(item.Id)" title="@item.Title" onmouseover="this.style.color='darkblue'" onmouseout="this.style.color='black'">@item.Title</a></h3>
+                                <div class="description-box">
+                                    @item.Description
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            }
-            <div style="text-align: right; position: relative; top: -38px;">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                }
             </div>
+            
         }
+
 
     </div>
 </div>

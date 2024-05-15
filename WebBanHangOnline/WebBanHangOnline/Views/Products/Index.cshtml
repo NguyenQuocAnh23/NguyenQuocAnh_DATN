@@ -28,6 +28,16 @@
                 <div class="sidebar_section" style="position: relative; left: -119px; top: -26px; width: 433px; height: 1017px; border-right: 1px solid; margin-top: 39px; ">
                     <div class="sidebar_title" style="font-size: 23px; background-color: black; height: 40px; width: 445px; border-radius: 10px 0px 50px 10px; position: relative; left: -13px;">
                         <span style=" position: relative; top: 9px; left: 8px; color: ghostwhite; font-size: 22px;">DANH MỤC SẢN PHẨM</span>
+                        @using (Html.BeginForm("Index", "Products", FormMethod.Post, new { }))
+                        {
+                            <div class="input-group input-group-sm" style=" position: absolute; right: -249px; top: 0px;">
+                                <span class="input-group-append">
+                                    <button type="submit" class="btn btn-info btn-flat" style="background-color: aliceblue; color: black; border-left: 2px solid; border-top: 2px solid; border-bottom: 2px solid"><i class="fa fa-search"></i></button>
+
+                                </span>
+                                @Html.TextBox("SearchText", ViewBag.SearchText as string, new { style = "width: 155px; border-radius: 4px 0 42px 4px; background-color: aliceblue; font-size: 18px;", placeholder = "Tên sản phẩm..." })
+                            </div>
+                        }
                     </div>
                     @Html.Action("MenuLeft", "Menu")
                     <div style=" width: 433px; height: 577px; background-image: url(/Content/assets//images/UnderPic.png);"></div>

@@ -31,8 +31,14 @@ namespace WebBanHangOnline.Models.EF
         public string Detail { get; set; }
         [StringLength(250)]
         public string Image { get; set; }
+        public decimal OriginalPrice { get; set; }
         public decimal Price { get; set; }
         public decimal? PriceSale { get; set; }
+        public string SizeGiay { get; set; }
+        public string SizeAo { get; set; }
+        public string SizeQuan { get; set; }
+        public string SizeVay { get; set; }
+
         public int Quantity { get; set; }
         public int ViewCount { get; set; }
         public bool isHome { get; set; }

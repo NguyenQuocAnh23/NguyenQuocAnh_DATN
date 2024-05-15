@@ -257,3 +257,5 @@ F:\DATN\DATN\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrat
 F:\DATN\DATN\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.UpdatePayment1.resources
 F:\DATN\DATN\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.countView.resources
 F:\DATN\DATN\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.updateEmail.resources
+F:\DATN\DATN\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.UpdateOriginPrice.resources
+F:\DATN\DATN\WebBanHangOnline\WebBanHangOnline\obj\Debug\WebBanHangOnline.Migrations.UpdateSize.resources

@@ -59,7 +59,7 @@
                     <h5 style="color:white;font-family: Arial;font-size: 40px;font-style: italic;position: relative;left: -3px;top: -40px;">Summer Collection 2024</h5>
                     <h1 style="color: white; font-family: Arial; font-weight: 900; font-size: 120px; margin-left:-8px ">BIG SALE</h1>
                     <h3 style="color: white; font-weight: 700"> UP TO 50% OFF New Arrivals</h3>
-                    <div style="border-radius: 50px; margin-bottom: 40px" class="red_button1 shop_now_button1"><a href="/products">BUY NOW</a></div>
+                    <div style="border-radius: 50px; margin-bottom: 40px" class="red_button1 shop_now_button1"><a class="ScrollDown" href="">BUY NOW</a></div>
                 </div>
             </div>
         </div>
@@ -195,4 +195,20 @@
             });
         });
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var scrollLinks = document.querySelectorAll('.ScrollDown');
+        scrollLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault(); // Ngăn chặn hành động mặc định của liên kết
+
+                // Cuộn xuống 
+                window.scrollBy({
+                    top: 1500,
+                    behavior: 'smooth' // Thêm hiệu ứng cuộn mượt
+                });
+            });
+        });
+    });
+
 </script>
