@@ -112,54 +112,12 @@
                             <div class="d-flex flex-column">
                                 <div class="p-3" style="position: relative; top: -38px;">
                                     <div class="form-group">
-                                        <label style=" font-size: 12px; margin: 0; color: darkblue; font-weight: 600; ">Size giày</label>
-                                        <select style="border-radius: 7px 20px 20px 7px;">
-                                            <option>-----</option>
-                                            <option>36</option>
-                                            <option>37</option>
-                                            <option>38</option>
-                                            <option>39</option>
-                                            <option>40</option>
-                                        </select>
+                                        <label style="font-size: 12px; margin: 0; color: darkblue; font-weight: 600;">Size: </label>
+                                        <input id="showSize" type="text" class="form-control" value="" style="border-radius: 7px 20px 20px 7px;" placeholder="Enter size...">
                                     </div>
+
                                 </div>
-                                <div class="p-3" style="position: relative; top: -76px; ">
-                                    <div>
-                                        <label style=" font-size: 12px; margin: 0; color: darkblue; font-weight: 600;">Size Áo</label>
-                                        <select style="border-radius: 7px 20px 20px 7px;">
-                                            <option>-----</option>
-                                            <option>M</option>
-                                            <option>L</option>
-                                            <option>XL</option>
-                                            <option>2XL</option>
-                                            <option>3Xl</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="p-3" style="position: relative; top: -96px; ">
-                                    <div>
-                                        <label style=" font-size: 12px; margin: 0; color: darkblue; font-weight: 600;">Size quần</label>
-                                        <select style="border-radius: 7px 20px 20px 7px;">
-                                            <option>-----</option>
-                                            <option>S</option>
-                                            <option>M</option>
-                                            <option>L</option>
-                                            <option>XL</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="p-3" style="position: relative; top: -118px; ">
-                                    <div>
-                                        <label style=" font-size: 12px; margin: 0; color: darkblue; font-weight: 600; ">Size váy</label>
-                                        <select style="border-radius: 7px 20px 20px 7px;">
-                                            <option>-----</option>
-                                            <option>S</option>
-                                            <option>M</option>
-                                            <option>L</option>
-                                            <option>XL</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                         
@@ -253,4 +211,30 @@
             });
         });
     });
+
+    //$(document).ready(function () {
+    //    // Lắng nghe sự kiện khi người dùng thay đổi giá trị trong ô input
+    //    $('#showSize').on('keyup change', function () {
+    //        // Lấy giá trị mà người dùng nhập vào
+    //        var sizeValue = $(this).val();
+
+    //        // Gán giá trị vào thuộc tính value của ô input
+    //        $(this).attr('value', sizeValue);
+    //    });
+    //});
+    $(document).ready(function () {
+        // Lắng nghe sự kiện khi người dùng thay đổi giá trị trong ô input
+        $('#showSize').on('input', function () {
+            // Lấy giá trị mà người dùng nhập vào
+            var sizeValue = $(this).val();
+
+            // Nếu không có giá trị nhập vào, gán một khoảng trắng vào biến size
+            size = sizeValue.trim() || ' '; // Sử dụng phương thức trim() để loại bỏ khoảng trắng thừa và kiểm tra giá trị rỗng
+
+            // Cập nhật giá trị vào ô input
+            $(this).val(size);
+        });
+    });
+
+
 </script>

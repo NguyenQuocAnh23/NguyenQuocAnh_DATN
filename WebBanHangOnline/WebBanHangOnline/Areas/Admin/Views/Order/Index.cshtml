@@ -53,7 +53,7 @@
                                 <td>@item.CustomerName</td>
                                 <td>@item.Phone</td>
                                 <td>@WebBanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
-                                <td>@(item.TypePayment==1?"Chờ thành toán":"Đã thanh toán")</td>
+                                <td>@(item.TypePayment == 1 ? "Chờ thanh toán" : (item.TypePayment == 2 ? "Kiểm tra tài khoản..." : "Đã thanh toán"))</td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 <td>
                                     <a href="/admin/order/view/@item.Id" class="btn btn-sm btn-success">Xem</a>
@@ -96,6 +96,9 @@
                     <label>Trạng thái</label>
                     <select class="form-control" id="ddTrangThai">
                         <option value="2">
+                            Kiểm tra tài khoản...
+                        </option>
+                        <option value="3">
                             Đã thanh toán
                         </option>
                     </select>

@@ -1,19 +1,21 @@
 ﻿$(document).ready(function () {
     ShowCount();
+    
+
     $('body').on('click', '.btnAddToCart', function (e) {
         e.preventDefault();
         var id = $(this).data('id');
-        var quatity = 1;
+        var quantity = 1;
+        var size = $('#showSize').val().trim(); // Lấy giá trị size từ input và loại bỏ khoảng trắng thừa
         var tQuantity = $('#quantity_value').text();
         if (tQuantity != '') {
-            quatity = parseInt(tQuantity);
+            quantity = parseInt(tQuantity);
         }
 
-        //alert(id + " " + quatity);
         $.ajax({
             url: '/shoppingcart/addtocart',
             type: 'POST',
-            data: { id: id, quantity: quatity },
+            data: { id: id, quantity: quantity, size: size },
             success: function (rs) {
                 if (rs.Success) {
                     $('#checkout_items').html(rs.Count);
@@ -22,6 +24,29 @@
             }
         });
     });
+    //$('body').on('click', '.btnAddToCart', function (e) {
+    //    e.preventDefault();
+    //    var id = $(this).data('id');
+    //    var quantity = 1;
+    //    var size = $('.showSize').text(); // Lấy giá trị size từ input
+    //    var tQuantity = $('#quantity_value').text();
+    //    if (tQuantity != '') {
+    //        quantity = parseInt(tQuantity);
+    //    }
+
+    //    $.ajax({
+    //        url: '/shoppingcart/addtocart',
+    //        type: 'POST',
+    //        data: { id: id, quantity: quantity, size: size }, // Thêm trường size vào dữ liệu gửi đi
+    //        success: function (rs) {
+    //            if (rs.Success) {
+    //                $('#checkout_items').html(rs.Count);
+    //                alert(rs.msg);
+    //            }
+    //        }
+    //    });
+    //});
+
     $('body').on('click', '.btnUpdate', function (e) {
         e.preventDefault();
         var id = $(this).data("id");

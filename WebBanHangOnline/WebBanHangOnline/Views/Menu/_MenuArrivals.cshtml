@@ -14,18 +14,38 @@
         <div class="col text-center">
             <div class="new_arrivals_sorting">
                 <ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
-                    <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">TẤT CẢ</li>
+                    @*<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">TẤT CẢ</li>*@
                     @foreach (var item in Model)
                     {
-                        if (@item.Alias == "vot-cau-long" || @item.Alias == "quan-cau-long" || @item.Alias == "ao-cau-long" || @item.Alias == "giay-cau-long" || @item.Alias == "tui-cau-long" || @item.Alias == "phu-kien-cau-long")
+                        @*if (@item.Alias == "vot-cau-long" || @item.Alias == "quan-cau-long" || @item.Alias == "ao-cau-long" || @item.Alias == "giay-cau-long" || @item.Alias == "tui-cau-long" || @item.Alias == "phu-kien-cau-long")
+                            {
+                                <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".@item.Alias">@item.Title</li>
+                            }*@
+                        if (@item.Alias == "vot-cau-long")
                         {
-                            <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".@item.Alias">@item.Title</li>
+                            <li class=" grid_sorting_button button d-flex flex-column justify-content-center align-items-center " data-filter=".vot-cau-long-lining, .vot-cau-long-yonex">@item.Title</li>
+                        }
+                        if (@item.Alias == "quan-cau-long")
+                        {
+                            <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".quan-cau-long-lining, .quan-cau-long-yonex, .vay-cau-long-lining, .vay-cau-long-yonex">Váy/@item.Title</li>
+                        }
+                        if (@item.Alias == "ao-cau-long")
+                        {
+                            <li class="autoShow grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter=".ao-cau-long-lining, .ao-cau-long-yonex">@item.Title</li>
+                        }
+                        if (@item.Alias == "giay-cau-long")
+                        {
+                            <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".giay-cau-long-lining, .giay-cau-long-yonex">@item.Title</li>
+                        }
+                        if (@item.Alias == "tui-cau-long")
+                        {
+                            <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".tui-cau-long-lining, .tui-cau-long-yonex">@item.Title</li>
+                        }
+                        if (@item.Alias == "phu-kien-cau-long")
+                        {
+                            <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".cuon-can-cau-long, .day-cang-vot, .qua-cau-long, .tat-chan">@item.Title</li>
                         }
                     }
-
-                    @*<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">women's</li>
-                        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">accessories</li>
-                        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">men's</li>*@
                 </ul>
             </div>
         </div>
@@ -39,4 +59,14 @@
     </div>
 
 }
+
+<script>
+    window.onload = function () {
+        var votCauLongButton = document.querySelector('li.autoShow');
+        if (votCauLongButton) {
+            votCauLongButton.click();
+        }
+    };
+</script>
+
 

@@ -26,7 +26,7 @@ namespace WebBanHangOnline.Controllers
 
             if (!string.IsNullOrEmpty(SearchText))
             {
-                items = items.Where(p => p.Title.Contains(SearchText));
+                items = items.Where(p => p.Title.Contains(SearchText) || p.Price.ToString().Contains(SearchText) || p.Alias.Contains(SearchText));
             }
 
             var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
@@ -87,7 +87,7 @@ namespace WebBanHangOnline.Controllers
 
         public ActionResult Partial_ItemByCateId()
         {
-            var items = db.Products.Where(x => x.IsActive).Take(10).ToList();
+            var items = db.Products.Where(x => x.IsActive).Take(100).ToList();
             return PartialView(items);
         }
     }

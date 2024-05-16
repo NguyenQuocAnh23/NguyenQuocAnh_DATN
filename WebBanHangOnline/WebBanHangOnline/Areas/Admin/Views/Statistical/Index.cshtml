@@ -306,6 +306,7 @@
                         //-------------
                         //- BAR CHART -
                         //-------------
+
                         var barChartCanvas = $('#barChart').get(0).getContext('2d');
                         var barChartData = $.extend(true, {}, areaChartData);
                         var temp0 = areaChartData.datasets[0];
@@ -313,10 +314,29 @@
                         barChartData.datasets[0] = temp1;
                         barChartData.datasets[1] = temp0;
 
+
+                        // Tính toán số lượng chữ số của giá trị doanh thu
+                        var digits = Math.floor(Math.log10(Math.max.apply(Math, arrDoanhThu))) + 1;
+
+                        // Tính toán giá trị cuối cùng của trục y
+                        var maxRevenue = Math.max.apply(Math, arrDoanhThu); // Lấy giá trị doanh thu lớn nhất
+                        var finalYValue = Math.ceil(maxRevenue / Math.pow(10, digits - 1)) * Math.pow(10, digits - 1); // Làm tròn lên đến số nguyên gần nhất lớn hơn giá trị lớn nhất của doanh thu
+
+                        // Tính toán bước nhảy
+                        var stepSize = finalYValue / 10; // Bước nhảy của các đường kẻ
                         var barChartOptions = {
                             responsive: true,
                             maintainAspectRatio: false,
-                            datasetFill: false
+                            datasetFill: false,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        suggestedMin: 0, // Giá trị tối thiểu trục y
+                                        suggestedMax: finalYValue, // Giá trị tối đa trục y
+                                        stepSize: stepSize // Bước nhảy của các đường kẻ
+                                    }
+                                }]
+                            }
                         };
 
                         // Khởi tạo biểu đồ

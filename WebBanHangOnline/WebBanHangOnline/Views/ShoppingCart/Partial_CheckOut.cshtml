@@ -61,13 +61,13 @@
             <div class="form-group">
                 <label style="font-size: 22px; margin-top: 6px; font-family: sans-serif; ">Phương thức thanh toán</label>
                 <div class="form-check" style="position: relative; left: 20px;">
-                    <input style="cursor:pointer" class="form-check-input" type="radio" name="paymentMethod" id="paymentMethod1" value="1" checked>
+                    <input style="cursor:pointer" class="form-check-input" type="radio" name="TypePayment" id="paymentMethod1" value="1" checked>
                     <label class="form-check-label" for="paymentMethod1" style="color: darkblue; text-transform:uppercase; cursor:pointer">Thanh toán khi nhận hàng</label>
                     <label></label>
-                </div>
+                </div> 
                 <div class="form-check" style="position: relative; left: 20px;">
-                    <input style="cursor:pointer" class="form-check-input" type="radio" name="paymentMethod" id="paymentMethod2" value="2">
-                    <label class="form-check-label" for="paymentMethod2" style="color: darkblue; text-transform: uppercase; cursor: pointer ">Chuyển khoản</label>
+                    <input style="cursor:pointer" class="form-check-input" type="radio" name="TypePayment" id="paymentMethod2" value="2">
+                    <label class="form-check-label" for="paymentMethod2" style="color: darkblue; text-transform: uppercase; cursor: pointer ">Chuyển khoản<span style=" color: darkgrey; text-transform: none;">(Nội dung: Họ tên + SDT đặt hàng)</span></label>
                 </div>
             </div>
 
@@ -87,7 +87,7 @@
 <script>
     $(document).ready(function () {
         // Bắt sự kiện thay đổi chọn phương thức thanh toán
-        $('input[name="paymentMethod"]').change(function () {
+        $('input[name="TypePayment"]').change(function () {
             // Kiểm tra xem phương thức thanh toán đã chọn có giá trị là 2 không
             if ($(this).val() === '2') {
                 // Nếu có, hiển thị phần thông tin ngân hàng

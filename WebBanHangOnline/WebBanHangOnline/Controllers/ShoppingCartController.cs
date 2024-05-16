@@ -60,7 +60,8 @@ namespace WebBanHangOnline.Controllers
                     {
                         ProductId = x.ProductId,
                         Quantity = x.Quantity,
-                        Price = x.Price
+                        Price = x.Price,
+                        Size= x.Size,
                     }));
                     order.TotalAmount = cart.Items.Sum(x => (x.Price * x.Quantity));
                     order.TypePayment = req.TypePayment;
@@ -158,7 +159,7 @@ namespace WebBanHangOnline.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToCart(int id, int quantity)
+        public ActionResult AddToCart(int id, int quantity, string size)
         {
             var code = new { Success = false, msg = "", code = -1, Count = 0 };
             var db = new ApplicationDbContext();
@@ -176,7 +177,8 @@ namespace WebBanHangOnline.Controllers
                     ProductName = checkProduct.Title,
                     CategoryName = checkProduct.ProductCategory.Title,
                     Alias = checkProduct.Alias,
-                    Quantity = quantity
+                    Quantity = quantity,
+                    Size = size
                 };
                 if (checkProduct.ProductImages.FirstOrDefault(x => x.isDefault) != null)
                 {
@@ -188,7 +190,7 @@ namespace WebBanHangOnline.Controllers
                     item.Price = (decimal)checkProduct.PriceSale;
                 }
                 item.TotalPrice = item.Quantity * item.Price;
-                cart.AddToCart(item, quantity);
+                cart.AddToCart(item, quantity,size); 
                 Session["Cart"] = cart;
                 code = new { Success = true, msg = "Đã thêm sản phẩm vào giỏ hàng!", code = 1, Count = cart.Items.Count };
             }

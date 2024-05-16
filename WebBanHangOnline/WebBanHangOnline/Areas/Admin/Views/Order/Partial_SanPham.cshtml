@@ -7,6 +7,7 @@
             <tr>
                 <th>STT</th>
                 <th>Tên sản phẩm</th>
+                <th>Size</th>
                 <th>Giá bán</th>
                 <th>Số lượng</th>
                 <th>Thành tiền</th>
@@ -19,6 +20,7 @@
                 <tr>
                     <td>@i</td>
                     <td>@item.Product.Title</td>
+                    <td>@item.Size</td>
                     <td>@WebBanHangOnline.Common.Common.FormatNumber(item.Price)</td>
                     <td>@item.Quantity</td>
                     <td>@WebBanHangOnline.Common.Common.FormatNumber((item.Price * item.Quantity), 0)</td>
