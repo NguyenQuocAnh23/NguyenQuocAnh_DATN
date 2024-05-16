@@ -361,6 +361,8 @@
     <Content Include="Content\assets\images\admin2.png" />
     <Content Include="Content\assets\images\admin3.png" />
     <Content Include="Content\assets\images\Back_Regis.png" />
+    <Content Include="Content\assets\images\bank.png" />
+    <Content Include="Content\assets\images\bank2.png" />
     <Content Include="Content\assets\images\BannerPic.png" />
     <Content Include="Content\assets\images\Banner_Logo.jpg" />
     <Content Include="Content\assets\images\In.png" />

@@ -1,7 +1,7 @@
 ﻿﻿@model IEnumerable<WebBanHangOnline.Models.ShoppingCartItem>
 @using WebBanHangOnline.Common
 <table class="table">
-    <tr class="text-center">
+    <tr id="tableHeader" class="text-center">
         <th>STT</th>
         <th>Ảnh sản phẩm</th>
         <th>Tên sản phẩm</th>
@@ -91,9 +91,27 @@
     else
     {
         <tr>
-            <th><i style=" font-size: 65px; position: relative; top: 9px; left: 337px; " class="fa fa-cart-arrow-down"></i></th>
+            <th><i style=" font-size: 193px; position: relative; top: 53px; left: 225px; " class="fa fa-cart-arrow-down"></i></th>
 
-            <th style=" position: relative; top: 29px; left: 349px;" colspan="7">Chưa có sản phẩm nào trong giỏ.<a href="/san-pham" style="color:blue"> Mua ngay</a></th>
+            <th style="position: relative; top: 100px; left: 147px; " colspan="7"><span style="font-size: 45px ">Giỏ hàng trống!</span><a href="/san-pham" style="color:blue"> Mua ngay</a></th>
         </tr>
     }
 </table>
+
+<script>
+    $(document).ready(function () {
+        // Kiểm tra xem có sản phẩm trong giỏ hàng hay không
+        var hasItems = @((Model != null && Model.Any()).ToString().ToLower());
+
+        // Lấy phần tiêu đề của bảng
+        var tableHeader = document.getElementById("tableHeader");
+
+        // Nếu không có sản phẩm trong giỏ hàng, ẩn tiêu đề của bảng
+        if (!hasItems) {
+            tableHeader.style.display = "none";
+        } else {
+            tableHeader.style.display = "table-row";
+        }
+    });
+</script>
+

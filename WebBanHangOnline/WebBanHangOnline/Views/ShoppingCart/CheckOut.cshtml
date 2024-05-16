@@ -17,7 +17,7 @@
 
             <!-- Breadcrumbs -->
 
-            <div class="breadcrumbs d-flex flex-row align-items-center">
+            <div class="breadcrumbs d-flex flex-row align-items-center" style="margin-top: -100px;">
                 <ul>
                     <li><a href="/home">Trang chủ</a></li>
                     <li class="active"><a href="/"><i class="fa fa-angle-right" aria-hidden="true"></i>Thanh toán</a></li>
@@ -26,15 +26,15 @@
 
             <!-- Sidebar -->
             <!-- Main Content -->
-            <div class="row">
+            <div class="row" style="height: 260px ">
 
                 <div class="col-md-12 text-center">
-                    <h1 class="">Thanh toán</h1>
-                    <p>Kiểm tra lại kĩ thông tin đơn hàng!</p>
+                    <h1 style="color:white">Thanh toán</h1>
+                    @*<p>Kiểm tra lại kĩ thông tin đơn hàng!</p>*@
                 </div>
 
             </div>
-            <hr />
+            <hr style=" position: relative; top: -335px; " />
             @if (ViewBag.CheckCart != null)
             {
                 <div class="row">
@@ -49,8 +49,8 @@
             }
             else
             {
-                <div>
-                    Bạn chưa có sản phẩm nào. Vui long quay lại trang <a href="/san-pham">sản phẩm</a> để mua hàng.
+                <div style=" top: -215px; left: 297px; ">
+                    Giỏ hàng hiện đang trống. Vui lòng quay lại trang <a href="/san-pham">sản phẩm</a> để mua hàng.
                 </div>
             }
         </div>
