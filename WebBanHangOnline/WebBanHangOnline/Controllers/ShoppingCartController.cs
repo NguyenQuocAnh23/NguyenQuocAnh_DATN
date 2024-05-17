@@ -178,6 +178,7 @@ namespace WebBanHangOnline.Controllers
                     ProductName = checkProduct.Title,
                     CategoryName = checkProduct.ProductCategory.Title,
                     Alias = checkProduct.Alias,
+                    ProductQuantity = checkProduct.Quantity,
                     Quantity = quantity,
                     Size = size
                 };

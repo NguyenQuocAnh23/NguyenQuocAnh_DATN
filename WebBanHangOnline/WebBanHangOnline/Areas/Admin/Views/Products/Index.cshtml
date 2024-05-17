@@ -133,8 +133,8 @@
                                 <a href='#' data-id="@item.Id" class="btnSale">@Html.Raw(strCheckSale)</a>
                             </td>*@
                                 <td>
-                                    <a href="/admin/products/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
-                                    <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+                                    <a style="width:40px" href="/admin/products/edit/@item.Id" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                    <a style="width:40px" href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete"><i class="fa fa-trash"></i></a>
                                 </td>
                                 <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
                             </tr>

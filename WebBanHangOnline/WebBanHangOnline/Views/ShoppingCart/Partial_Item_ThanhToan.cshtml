@@ -1,7 +1,7 @@
 ﻿﻿@model IEnumerable<WebBanHangOnline.Models.ShoppingCartItem>
 @using WebBanHangOnline.Common
 
-<div style="margin-top: -358px;">
+<div style="margin-top: -358px; width: 374px;">
     @if (Model != null && Model.Any())
     {
         <h3>ĐƠN HÀNG <span style="border: 1px solid; float: right; position: relative; border-radius: 34px; width: 35px; height: 35px; background-color: darkblue;"><small style="position: relative; left: 12px; top: -4px; color: white; font-size: 16px;">@Model.Count()</small></span></h3>
@@ -9,10 +9,10 @@
         <div style="border:1px solid #808080;">
             <table class="table">
                 <tr>
-                    <td>Sản phẩm</td>
-                    <td>Size</td>
-                    <td>SL</td>
-                    <td>Giá</td>
+                    <td style=" width: 45%;">Sản phẩm</td>
+                    <td style=" width: 15%;">Size</td>
+                    <td style=" width: 15%;">SL</td>
+                    <td style=" width: 25%;">Giá</td>
                 </tr>
                 @foreach (var item in Model)
                 {
@@ -25,11 +25,12 @@
 
                     </tr>
                 }
-                <tr>
-                    <td>Tổng tiền</td>
-                    <td></td>
-                    <td>@Common.FormatNumber(tongtien, 0)</td>
-                </tr>
+            <tr>
+                <td>Tổng tiền</td>
+                <td></td>
+                <td></td>
+                <td>@Common.FormatNumber(tongtien, 0)</td>
+            </tr>
             </table>
         </div>
 

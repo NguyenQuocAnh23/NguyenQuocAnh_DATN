@@ -9,9 +9,10 @@
         <th>Giá</th>
         <th>Size</th>
         <th style="width:100px;">Số lượng</th>
+        <th>Tồn kho</th>
         <th>Thành tiền</th>
         <th style="width: 104.2px; ">
-
+            Thao tác
         </th>
     </tr>
     @if (Model != null && Model.Any())
@@ -35,16 +36,17 @@
                     @item.Size
                 </td>
                 <td><input type="number" class="form-control" id="Quantity_@item.ProductId" value="@item.Quantity" /></td>
+                <td id="soSanhTon">@item.ProductQuantity</td>
                 <th>@Common.FormatNumber(item.TotalPrice, 2)</th>
                 <td>
-                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-danger btnDelete" style=" width: 80px; position: relative; top: -6px; ">Xóa</a>
+                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-danger btnDelete" style=" width: 80px; position: relative; top: -6px; "><i class="fa fa-trash"></i></a>
                     <a href="#" data-id="@item.ProductId" class="btn btn-sm btnUpdate" style="background-color:darkblue; color:white">Cập nhật</a>
                 </td>
             </tr>
             i++;
         }
         <tr>
-            <th colspan="10" class="text-right">Tổng: </th>
+            <th colspan="8" class="text-right">Tổng: </th>
             <th class="text-center">@Common.FormatNumber(tongtien, 0)</th>
             <th></th>
         </tr>
