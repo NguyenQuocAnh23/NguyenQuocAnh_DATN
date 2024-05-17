@@ -31,7 +31,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Danh mục sản phẩm</a></li>
+                    <li class="breadcrumb-item">Danh mục sản phẩm</li>
                     <li class="breadcrumb-item active">Thêm mới</li>
                 </ol>
             </div>
@@ -74,11 +74,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Alias</label>
-                        @Html.TextBoxFor(x => x.Alias, new { @class = "form-control", @placeholder = "Alias ..." })
+                        <label for="exampleInputEmail1">Tóm tắt tên</label>
+                        @Html.TextBoxFor(x => x.Alias, new { @class = "form-control", @placeholder = "Tóm tắt tên" })
                         @Html.ValidationMessageFor(x => x.Alias, null, new { @class = "text-danger" })
                     </div>
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <label for="exampleInputPassword1">Seo Title</label>
                         @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
                     </div>
@@ -89,8 +89,8 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">Seo Keywords</label>
                         @Html.TextAreaFor(x => x.SeoKeywords, new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
+                    </div>*@
+                    <div class="form-group text-right">
                         <button type="submit" class="btn btn-primary">Lưu</button>
                         <a href="/admin/productcategory" class="btn btn-danger">Quay lại</a>
                     </div>

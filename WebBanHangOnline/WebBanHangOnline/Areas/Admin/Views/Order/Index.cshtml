@@ -10,7 +10,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin" class="nav-link">Trang chủ</a>
+            <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/admin/order" class="nav-link">Danh sách đơn hàng</a>
@@ -37,7 +37,7 @@
                         <th>Tiền</th>
                         <th>Trạng thái</th>
                         <th>Ngày tạo</th>
-                        <th></th>
+                        <th style="width: 184px ">Thao tác</th>
                     </tr>
                 </thead>
 
@@ -47,7 +47,7 @@
                         var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                         foreach (var item in Model)
                         {
-                            <tr>
+                            <tr id="trow_@item.Id">
                                 <td>@i</td>
                                 <td>@item.Code</td>
                                 <td>@item.CustomerName</td>
@@ -56,8 +56,11 @@
                                 <td>@(item.TypePayment == 1 ? "Chờ thanh toán" : (item.TypePayment == 2 ? "Kiểm tra tài khoản..." : "Đã thanh toán"))</td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 <td>
+                                    <a href="#" class="btn btn-sm btnCapNhat" data-id="@item.Id" style="background-color:darkblue; color:white">Cập nhật</a>
+
                                     <a href="/admin/order/view/@item.Id" class="btn btn-sm btn-success">Xem</a>
-                                    <a href="#" class="btn btn-sm btn-danger btnCapNhat" data-id="@item.Id">Cập nhật</a>
+
+                                    <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
                                 </td>
                             </tr>
                             i++;
@@ -122,6 +125,21 @@
                 var id = $(this).data("id");
                 $('#txtOrderId').val(id);
                 $('#modal-default').modal('show');
+            });
+
+            $('body').on('click', '.btnDelete', function () {
+                var id = $(this).data("id");
+                var conf = confirm('Đồng ý xóa?');
+                if (conf == true) {
+                    $.ajax({
+                        url: '/admin/order/delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) $('#trow_' + id).remove();
+                        }
+                    });
+                }
             });
 
             $('body').on('click', '#btnLuu', function () {

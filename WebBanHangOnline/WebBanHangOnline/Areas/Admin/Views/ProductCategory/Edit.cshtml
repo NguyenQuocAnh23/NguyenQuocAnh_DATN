@@ -12,7 +12,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin" class="nav-link">Trang chủ</a>
+            <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/admin/productcategory" class="nav-link">Danh mục sản phẩm</a>
@@ -33,7 +33,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Danh mục sản phẩm</a></li>
+                    <li class="breadcrumb-item">Danh mục sản phẩm</li>
                     <li class="breadcrumb-item active">Cập nhật</li>
                 </ol>
             </div>
@@ -76,23 +76,23 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Alias</label>
+                            <label for="exampleInputEmail1">Tóm tắt tên</label>
                             @Html.TextBoxFor(x => x.Alias, new { @class = "form-control", @placeholder = "Alias" })
                             @Html.ValidationMessageFor(x => x.Alias, null, new { @class = "text-danger" })
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Seo title</label>
-                            @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">SeoDescription</label>
-                            @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">SeoKeywords</label>
-                            @Html.TextAreaFor(x => x.SeoKeywords, new { @class = "form-control" })
-                        </div>
-                        <div class="form-group">
+                        @*<div class="form-group">
+                                <label for="exampleInputPassword1">Seo title</label>
+                                @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">SeoDescription</label>
+                                @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">SeoKeywords</label>
+                                @Html.TextAreaFor(x => x.SeoKeywords, new { @class = "form-control" })
+                            </div>*@
+                        <div class="form-group text-right">
 
                             <button type="submit" class="btn btn-primary">Lưu</button>
                             <a href="/admin/productcategory" class="btn btn-danger">Quay lại</a>
@@ -116,19 +116,19 @@
 
 @section  scripts{
     <script>
-          $(document).ready(function () {
-              CKEDITOR.replace('txtDetail', {
-                  customConfig: '/content/ckeditor/config.js',
-                  extraAllowedContent: 'span',
-              });
-          });
-          function BrowseServer(field) {
-              var finder = new CKFinder();
-              finder.selectActionFunction = function (fileUrl) {
-                  document.getElementById(field).value = fileUrl;
-              };
-              finder.popup();
-          }
+        $(document).ready(function () {
+            CKEDITOR.replace('txtDetail', {
+                customConfig: '/content/ckeditor/config.js',
+                extraAllowedContent: 'span',
+            });
+        });
+        function BrowseServer(field) {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                document.getElementById(field).value = fileUrl;
+            };
+            finder.popup();
+        }
 
     </script>
 }

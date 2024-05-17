@@ -81,6 +81,7 @@ namespace WebBanHangOnline.Controllers
                     {
                         strSanPham += "<tr>";
                         strSanPham += "<td>" + sp.ProductName + "</td>";
+                        strSanPham += "<td>" + sp.Size + "</td>";
                         strSanPham += "<td>" + sp.Quantity + "</td>";
                         strSanPham += "<td>" + WebBanHangOnline.Common.Common.FormatNumber(sp.TotalPrice, 0) + "</td>";
                         strSanPham += "</tr>";

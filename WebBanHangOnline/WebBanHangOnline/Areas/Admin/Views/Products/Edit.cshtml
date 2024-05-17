@@ -32,7 +32,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/admin/products">Danh sách sản phẩm</a></li>
+                    <li class="breadcrumb-item">Danh sách sản phẩm</li>
                     <li class="breadcrumb-item active">Cập nhật</li>
                 </ol>
             </div>
@@ -80,19 +80,19 @@
                                             @Html.TextBoxFor(x => x.Alias, new { @class = "form-control", @placeholder = "Alias ..." })
                                             @Html.ValidationMessageFor(x => x.Alias, null, new { @class = "text-danger" })
                                         </div>
-                                        <div class="form-group">
+                                        @*<div class="form-group">
                                             <label for="exampleInputEmail1">Mã kiểm soát tồn kho</label>
                                             @Html.TextBoxFor(x => x.ProductCode, new { @class = "form-control", @placeholder = "SKU ..." })
                                             @Html.ValidationMessageFor(x => x.ProductCode, null, new { @class = "text-danger" })
-                                        </div>
+                                        </div>*@
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Danh mục</label>
                                             @Html.DropDownListFor(x => x.ProductCategoryId, ViewBag.ProductCategory as SelectList, "- Chọn danh mục sản phẩm", new { @class = "form-control", @placeholder = "Mã sản phẩm ..." })
                                             @Html.ValidationMessageFor(x => x.ProductCategoryId, null, new { @class = "text-danger" })
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Mô tả</label>
-                                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @placeholder = "Mô tả sản phấm ..." })
+                                            <label for="exampleInputEmail1">Các size hiện có</label>
+                                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @placeholder = "Size ..." })
                                             @Html.ValidationMessageFor(x => x.Description, null, new { @class = "text-danger" })
                                         </div>
                                         <div class="form-group">
@@ -203,7 +203,7 @@
                                 <!-- /.tab-content -->
                             </div><!-- /.card-body -->
                             <div style="text-align:right; padding: 0 20px 30px 0">
-                                <button type="submit" class="btn btn-success">Cập nhật</button>
+                                <button type="submit" class="btn btn-success" style="background-color:darkblue">Cập nhật</button>
                                 <a href="/admin/products" class="btn btn-danger">Quay lại</a>
                             </div>
                         </div>
