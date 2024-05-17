@@ -26,7 +26,7 @@ namespace WebBanHangOnline.Controllers
 
             if (!string.IsNullOrEmpty(SearchText))
             {
-                items = items.Where(p => p.Title.Contains(SearchText) || p.Price.ToString().Contains(SearchText) || p.Alias.Contains(SearchText));
+                items = items.Where(p => p.Title.Contains(SearchText) || p.Price.ToString().Contains(SearchText) || p.Alias.Contains(SearchText) || p.PriceSale.ToString().Contains(SearchText));
             }
 
             var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
