@@ -82,30 +82,47 @@
                                     @*@Html.TextBox("Searchtext", null, new { style = "width: 85%", placeholder = "Tiêu đề ..." })*@
                                     <div class="search-container" style="">
                                         @*<input type="text" name="searchtext" class="form-control" placeholder="Tìm sản phẩm..." onclick="showOptions()" onkeypress="handleKeyPress(event)" style="background-color: aliceblue; width: 202px">*@
-                                        @using (Html.BeginForm("Index", "Products", FormMethod.Post, new { }))
+                                        @*@using (Html.BeginForm("Index", "Products", FormMethod.Post, new { }))
+                                            {
+                                                <div class="input-group input-group-sm" style="position: absolute;">
+
+                                                    @Html.TextBox("SearchText", ViewBag.SearchText as string, new
+                                                    {
+                                                        @class = "form-control",
+                                                        placeholder = "Tìm sản phẩm...",
+                                                        style = "background-color: aliceblue; width: 202px",
+
+                                                    })
+                                                    <span class="input-group-append">
+                                                        <button type="submit" class="btn btn-info btn-flat" style="background-color: aliceblue; color: grey"onclick="window.location.href='/products'">
+                                                            <i class="fa fa-search"></i>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            }*@
+                                        @using (Html.BeginForm("Index", "Products", FormMethod.Post, new { @class = "search-form" }))
                                         {
                                             <div class="input-group input-group-sm" style="position: absolute;">
-
                                                 @Html.TextBox("SearchText", ViewBag.SearchText as string, new
                                                 {
                                                     @class = "form-control",
                                                     placeholder = "Tìm sản phẩm...",
-                                                    style = "background-color: aliceblue; width: 202px",
-                                                    
+                                                    style = "background-color: aliceblue; width: 202px"
                                                 })
                                                 <span class="input-group-append">
-                                                    <button type="submit" class="btn btn-info btn-flat" style="background-color: aliceblue; color: grey"onclick="window.location.href='/products'">
+                                                    <button type="submit" class="btn btn-info btn-flat" style="background-color: aliceblue; color: grey">
                                                         <i class="fa fa-search"></i>
                                                     </button>
                                                 </span>
                                             </div>
                                         }
 
+
                                         @*<div class="options" id="options" style="display: none; height: 64px; width: 242px; border-radius: 0 0 20px 20px;">
-                                            <p style=" border-bottom: 1px solid; font-size: 8px; text-align: left; "><i class="fa fa-fire"></i>Sản phẩm hot:</p>
-                                            <a href="/danh-muc-san-pham/vot-cau-long-lining-19" style="position: absolute; border: 1px solid; border-radius: 20px; font-size: 9px; top: 24px;">Vợt cầu lông lining</a>
-                                            <a href="/danh-muc-san-pham/ao-cau-long-yonex-14" style=" position: absolute; border: 1px solid; border-radius: 20px; font-size: 9px; top: 24px; left: 125px;">Áo cầu lông yonex</a>
-                                        </div>*@
+                                                <p style=" border-bottom: 1px solid; font-size: 8px; text-align: left; "><i class="fa fa-fire"></i>Sản phẩm hot:</p>
+                                                <a href="/danh-muc-san-pham/vot-cau-long-lining-19" style="position: absolute; border: 1px solid; border-radius: 20px; font-size: 9px; top: 24px;">Vợt cầu lông lining</a>
+                                                <a href="/danh-muc-san-pham/ao-cau-long-yonex-14" style=" position: absolute; border: 1px solid; border-radius: 20px; font-size: 9px; top: 24px; left: 125px;">Áo cầu lông yonex</a>
+                                            </div>*@
                                     </div>
                                     <span class="input-group-append">
                                         <button type="button" class="btn btn-info btn-flat" style="background-color: aliceblue; color: gray" onclick="window.location.href='/products'">
@@ -314,20 +331,20 @@
             }
         }
 
-        //window.addEventListener("scroll", function () {
-        //    var header = document.querySelector(".header");
-        //    if (window.scrollY > 100) {
-        //        header.style.top = "0";
-        //    } else {
-        //        header.style.top = "75px";
-        //    }
-        //});
+            //window.addEventListener("scroll", function () {
+            //    var header = document.querySelector(".header");
+            //    if (window.scrollY > 100) {
+            //        header.style.top = "0";
+            //    } else {
+            //        header.style.top = "75px";
+            //    }
+            //});
 
 
 
     </script>
 
-    
+
     <script src="~/Content/assets/styles/bootstrap4/popper.js"></script>
     <script src="~/Content/assets/styles/bootstrap4/bootstrap.min.js"></script>
     <script src="~/Content/assets/plugins/Isotope/isotope.pkgd.min.js"></script>
