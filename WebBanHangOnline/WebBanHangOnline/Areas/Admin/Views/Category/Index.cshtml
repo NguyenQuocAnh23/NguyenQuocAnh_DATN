@@ -47,8 +47,8 @@
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Tên danh mục</th>
-                        <th>Thứ tự</th>
+                        <th style="width: 579px;">Tên danh mục</th>
+                        @*<th>Thứ tự</th>*@
                         <th style=" width: 125px; ">
                             <div class="card-tools">
                                 <a href="/admin/category/add" class=" btn btn-primary" style=" background-color:darkblue; ">Thêm mới</a>
@@ -65,8 +65,8 @@
                         {
                             <tr id="trow_@item.Id">
                                 <td>@i</td>
-                                <td>@item.Title</td>
-                                <td>@item.Postions</td>
+                                <td style="width: 579px;">@item.Title</td>
+                                @*<td>@item.Postions</td>*@
                                 <td>
                                     <a style=" width: 44px;" href="/admin/category/edit/@item.Id" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                     <a href="#" data-id ="@item.Id" class="btn btn-sm btn-danger btnDelete" style=" width: 44px; "><i class="fa fa-trash"></i></a>
