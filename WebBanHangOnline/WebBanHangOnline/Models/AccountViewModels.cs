@@ -109,6 +109,7 @@ namespace WebBanHangOnline.Models
 
     }
 
+
     public class RegisterViewModel
     {
         [Required(ErrorMessage = "Vui lòng nhập Email")]

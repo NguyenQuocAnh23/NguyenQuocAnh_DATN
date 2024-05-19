@@ -152,6 +152,14 @@ namespace WebBanHangOnline.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Kiểm tra email đã tồn tại
+                var existingUser = await UserManager.FindByEmailAsync(model.Email);
+                if (existingUser != null)
+                {
+                    ModelState.AddModelError("", "Email này đã được sử dụng. Vui lòng nhập lại Email khác!");
+                    return View(model);
+                }
+
                 var user = new ApplicationUser {
                     UserName = model.Email,
                     Email = model.Email,
