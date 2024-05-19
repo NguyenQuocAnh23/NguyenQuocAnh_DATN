@@ -19,7 +19,7 @@ namespace WebBanHangOnline.Models.EF
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập tên sản phẩm")]
         [StringLength(250)]
         public string Title { get; set; }
         [StringLength(250)]
@@ -31,7 +31,9 @@ namespace WebBanHangOnline.Models.EF
         public string Detail { get; set; }
         [StringLength(250)]
         public string Image { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập giá nhập")]
         public decimal OriginalPrice { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập giá bán")]
         public decimal Price { get; set; }
         public decimal? PriceSale { get; set; }
         public string Size { get; set; }
@@ -42,6 +44,7 @@ namespace WebBanHangOnline.Models.EF
         public bool isFeature { get; set; }
         public bool isHot { get; set; }
         public bool IsActive { get; set; }
+        [Required(ErrorMessage = "Vui lòng chọn danh mục")]
         public int ProductCategoryId { get; set; }
         [StringLength(250)]
         public string SeoTitle { get; set; }

@@ -17,10 +17,10 @@ namespace WebBanHangOnline.Models.EF
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập tiêu đề")]
         [StringLength(150)]
         public string Title { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập tên tóm tắt")]
         [StringLength(150)]
         public string Alias { get; set; }
         public string Description { get; set; }
