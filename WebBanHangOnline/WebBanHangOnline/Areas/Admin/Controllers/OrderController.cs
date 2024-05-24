@@ -59,15 +59,45 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            var item = db.Orders.Find(id);
-            if (item != null)
+            //    var item = db.Orders.Find(id);
+            //    if (item != null)
+            //    {
+            //        db.Orders.Remove(item);
+            //        db.SaveChanges();
+            //        return Json(new { success = true });
+            //    }
+            //    return Json(new { success = false });
+            using (var transaction = db.Database.BeginTransaction())
             {
-                db.Orders.Remove(item);
-                db.SaveChanges();
-                return Json(new { success = true });
-            }
-            return Json(new { success = false });
-        }
+                try
+                {
+                    var item = db.Orders.Find(id);
+                    if (item != null)
+                    {
+                        // Update product quantities
+                        foreach (var detail in item.OrderDetails)
+                        {
+                            var product = db.Products.Find(detail.ProductId);
+                            if (product != null)
+                            {
+                                product.Quantity += detail.Quantity;
+                            }
+                        }
 
+                        db.Orders.Remove(item);
+                        db.SaveChanges();
+                        transaction.Commit();
+                        return Json(new { success = true });
+                    }
+                    return Json(new { success = false });
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    // Log the exception
+                    return Json(new { success = false, message = "An error occurred while deleting the order." });
+                }
+            }
+        }
     }
 }

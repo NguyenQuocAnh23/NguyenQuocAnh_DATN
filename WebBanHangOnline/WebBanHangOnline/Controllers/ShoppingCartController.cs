@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -13,6 +14,43 @@ namespace WebBanHangOnline.Controllers
     public class ShoppingCartController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+
+        public ShoppingCartController()
+        {
+        }
+
+        public ShoppingCartController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         // GET: ShoppingCart
         public ActionResult Index()
@@ -71,8 +109,37 @@ namespace WebBanHangOnline.Controllers
                     Random rd = new Random();
                     order.Code = "DH" + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9);
                     //order.E = req.CustomerName;
-                    db.Orders.Add(order);
-                    db.SaveChanges();
+                    //db.Orders.Add(order);
+                    //db.SaveChanges();
+
+                    using (var transaction = db.Database.BeginTransaction())
+                    {
+                        try
+                        {
+                            db.Orders.Add(order);
+                            db.SaveChanges();
+
+                            // Update product quantities
+                            foreach (var item in order.OrderDetails)
+                            {
+                                var product = db.Products.Find(item.ProductId);
+                                if (product != null)
+                                {
+                                    product.Quantity -= item.Quantity;
+                                }
+                            }
+                            db.SaveChanges();
+
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            // Log the exception
+                            return Json(code); // You might want to provide more details here
+                        }
+                    }
+
                     //send mail cho khachs hang
                     var strSanPham = "";
                     var thanhtien = decimal.Zero;
@@ -122,11 +189,11 @@ namespace WebBanHangOnline.Controllers
 
         public ActionResult Partial_CheckOut()
         {
-            //var user = UserManager.FindByNameAsync(User.Identity.Name).Result;
-            //if (user != null)
-            //{
-            //    ViewBag.User = user;
-            //}
+            var user = UserManager.FindByNameAsync(User.Identity.Name).Result;
+            if (user != null)
+            {
+                ViewBag.User = user;
+            }
             return PartialView();
         }
 

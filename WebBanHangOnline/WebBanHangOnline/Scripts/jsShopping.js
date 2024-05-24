@@ -14,8 +14,14 @@
         var stock = parseInt($('#checkTon').text()); // Lấy số lượng tồn kho từ phần tử có id là checkTon
 
         // Kiểm tra nếu số lượng mua lớn hơn số lượng tồn kho
-        if (quantity > stock) {
-            alert('Số lượng mua vượt quá tồn kho, vui lòng chọn lại số lượng.');
+        //if (quantity > stock ) {
+        //    alert('Số lượng mua vượt quá tồn kho, vui lòng chọn lại số lượng.');
+        //    quantity = stock; // Cập nhật giá trị người dùng nhập = số lượng tồn kho
+        //    $('#quantity_value').text(quantity); // Cập nhật giá trị hiển thị trên input thành số lượng tồn kho
+        //    return; // Dừng lại, không thêm vào giỏ hàng
+        //}
+        if (quantity > stock || stock == 0) {
+            alert('Số lượng mua vượt quá tồn kho hoặc sản phẩm đã hết hàng, vui lòng xem lại số lượng.');
             quantity = stock; // Cập nhật giá trị người dùng nhập = số lượng tồn kho
             $('#quantity_value').text(quantity); // Cập nhật giá trị hiển thị trên input thành số lượng tồn kho
             return; // Dừng lại, không thêm vào giỏ hàng

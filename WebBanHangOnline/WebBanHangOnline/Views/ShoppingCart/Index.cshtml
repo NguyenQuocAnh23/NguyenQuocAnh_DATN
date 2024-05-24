@@ -34,12 +34,21 @@
                                 <div class="text-left">
                                     <a href="/san-pham" class="btn" style="border: 1px solid darkblue; border-radius: 5px; color: darkblue;">Mua thêm</a>
                                 </div>
-                                
+
                             </div>
                             <div class="col-9">
                                 <div class="text-right">
                                     <a href="#" class="btn btn-danger btnDeleteAll">Xóa toàn bộ sản phẩm</a>
-                                    <a href="/thanh-toan" class="btn" style="background-color:darkblue; color:white">Đặt hàng</a>
+                                    @*<a href="/thanh-toan" class="btn" style="background-color:darkblue; color:white">Đặt hàng</a>*@
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        <a href="/thanh-toan" class="btn" style="background-color:darkblue; color:white">Đặt hàng</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="javascript:void(0);" class="btn" style="background-color:darkblue; color:white" onclick="showLoginMessage()">Đặt hàng</a>
+                                    }
+
                                 </div>
 
                             </div>
@@ -55,4 +64,10 @@
 
 @section scripts{
     <script src="~/Content/assets/js/categories_custom.js"></script>
+    <script type="text/javascript">
+        function showLoginMessage() {
+            alert('Vui lòng đăng nhập để có thể đặt mua hàng.');
+            window.location.href = '/account/login';
+        }
+    </script>
 }

@@ -33,8 +33,8 @@
                         <th>STT</th>
                         <th>Mã đơn hàng</th>
                         <th>Tên Khách hàng</th>
-                        <th>Phone</th>
-                        <th>Tiền</th>
+                        <th>SĐT</th>
+                        <th>Tổng tiền</th>
                         <th>Trạng thái</th>
                         <th>Ngày tạo</th>
                         <th style="width: 165px ">Thao tác</th>
@@ -86,31 +86,40 @@
 
 <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="height: 146px;">
             <div class="modal-header">
-                <h4 class="modal-title">Cập nhật trạng thái</h4>
+                <h4 class="modal-title" style="font-weight:600">Trạng thái thanh toán</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span style="font-size: 35px;" aria-hidden="true"><i style="color:red" class="far fa-times-circle"></i></span>
                 </button>
             </div>
-            <div class="modal-body">
-                <input type="hidden" id="txtOrderId" value="0" />
-                <div class="form-group">
-                    <label>Trạng thái</label>
-                    <select class="form-control" id="ddTrangThai">
-                        <option value="2">
-                            Kiểm tra tài khoản...
-                        </option>
-                        <option value="3">
-                            Đã thanh toán
-                        </option>
-                    </select>
+
+            <div class="row">
+                <div class="col-9">
+                    <div class="modal-body">
+                        <input type="hidden" id="txtOrderId" value="0" />
+                        <div class="form-group">
+
+                            <select style="cursor:pointer" class="form-control" id="ddTrangThai">
+                                <option value="2">
+                                    Kiểm tra tài khoản...
+                                </option>
+                                <option value="3">
+                                    Đã thanh toán
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="modal-footer justify-content-between">
+                        <button style="background-color:darkblue; width:100%" type="button" class="btn btn-primary" id="btnLuu">Đồng ý</button>
+                    </div>
                 </div>
             </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary" id="btnLuu">Lưu</button>
-            </div>
+
+           
+           
         </div>
         <!-- /.modal-content -->
     </div>

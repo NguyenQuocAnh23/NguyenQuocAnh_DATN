@@ -369,6 +369,10 @@
     <Content Include="Content\assets\dist\js\pages\dashboard.js" />
     <Content Include="Content\assets\dist\js\pages\dashboard2.js" />
     <Content Include="Content\assets\dist\js\pages\dashboard3.js" />
+    <Content Include="Content\assets\images\1b.png" />
+    <Content Include="Content\assets\images\2.png" />
+    <Content Include="Content\assets\images\3.png" />
+    <Content Include="Content\assets\images\8_Vợt Cầu Lông Yonex Nanoflare 1000Z - Xách Tay.png" />
     <Content Include="Content\assets\images\admin1.png" />
     <Content Include="Content\assets\images\admin2.png" />
     <Content Include="Content\assets\images\admin3.png" />
@@ -3755,6 +3759,7 @@
     <Content Include="Views\ShoppingCart\Partial_Item_ThanhToan.cshtml" />
     <Content Include="Views\ShoppingCart\Partial_CheckOut.cshtml" />
     <Content Include="Views\ShoppingCart\CheckOutSuccess.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
