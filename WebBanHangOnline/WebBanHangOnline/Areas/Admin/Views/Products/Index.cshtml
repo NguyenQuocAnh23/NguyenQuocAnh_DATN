@@ -71,12 +71,12 @@
                         
                         <th >STT</th>
                         <th style="width: 88px">Hình ảnh</th>
-                        <th style="width: 380px">Tên sản phẩm</th>
+                        <th @*style="width: 380px"*@>Tên sản phẩm</th>
                         <th style="width: 150px">Danh mục</th>
                         <th style="width: 87px">Số lượng</th>
                         <th style="width: 102px">Giá</th>
                         <th style="width: 105px">Ngày tạo</th>
-                        @*<th>Home</th>*@
+                        <th style="width: 80px;">Hiển thị</th>
                         <th style="width: 104px ">Tham khảo</th>
                         @*<th>Hot</th>
                     <th>Feature</th>
@@ -117,9 +117,9 @@
                                 <td>@item.Quantity</td>
                                 <td>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                @*<td style="text-align:left">
-                                    <a href='#' data-id="@item.Id" class="btnHome">@Html.Raw(strCheckHome)</a>
-                                </td>*@
+                                <td style="text-align:left">
+                                    <a href='#' data-id="@item.Id" class="btnHome" style="position: relative; left: 22px; ">@Html.Raw(strCheckHome)</a>
+                                </td>
                                 <td >
                                     <a href='#' data-id="@item.Id" class="btnActive" style=" position: relative; left: 32px; ">@Html.Raw(strCheck)</a>
                                 </td>
